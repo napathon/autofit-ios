@@ -43,6 +43,9 @@
     self.window.tintColor = kAppTintColor;
     [self.window makeKeyAndVisible];
     
+    // Always set to region monitoring
+    self.applicationMode = CSMApplicationModeRegionMonitoring;
+    
     return YES;
 }
 
