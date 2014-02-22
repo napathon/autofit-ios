@@ -21,7 +21,6 @@
 - (id)init {
     self = [super init];
     if (self) {
-        // soem change
     }
     return self;
 }
