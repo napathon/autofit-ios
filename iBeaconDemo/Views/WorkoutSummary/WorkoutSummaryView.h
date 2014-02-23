@@ -19,5 +19,6 @@
 @property (strong, nonatomic) UIButton* clearWorkoutStats;
 
 - (FBBitmapFontView*)setupBitmapFontViewWithFrame:(CGRect)frame;
+- (void) resetSizes;
 
 @end

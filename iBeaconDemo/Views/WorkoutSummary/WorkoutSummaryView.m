@@ -32,16 +32,18 @@
         
         _workoutCaloriesBurned = [self setupBitmapFontViewWithFrame:CGRectMake(20.0, 300.0, 250.0, 50.0)];
         _workoutCaloriesBurned.text = @"0";
-        [self addSubview:_workoutCaloriesBurned];
+        //[self addSubview:_workoutCaloriesBurned];
         
-        _workoutTimeElapsed = [self setupBitmapFontViewWithFrame:CGRectMake(20.0, 200.0, 250.0, 50.0)];
+        _workoutTimeElapsed = [self setupBitmapFontViewWithFrame:CGRectMake(20.0, 400.0, 250.0, 50.0)];
         _workoutTimeElapsed.text = @"0";
-        [self addSubview:_workoutTimeElapsed];
+        //[self addSubview:_workoutTimeElapsed];
         
         _clearWorkoutStats = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         _clearWorkoutStats.frame = CGRectMake(20.0, 300.0, 250.0, 50.0);
         [_clearWorkoutStats setTitle:@"Reset Stats" forState:UIControlStateNormal];
-        [self addSubview:_clearWorkoutStats];
+        //[self addSubview:_clearWorkoutStats];
+        
+        [self resetSizes];
         
         // Set background color
         self.backgroundColor = [UIColor blackColor];
@@ -69,8 +71,8 @@
 {
     [_workoutNameLabel resetSize];
     [_workoutCountLabel resetSize];
-    [_workoutCaloriesBurned resetSize];
-    [_workoutTimeElapsed resetSize];
+    //[_workoutCaloriesBurned resetSize];
+    //[_workoutTimeElapsed resetSize];
 }
 
 /*

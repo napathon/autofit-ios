@@ -10,6 +10,8 @@
 
 @interface KiwiMoveManager : NSObject<SocketIODelegate>
 
+@property(nonatomic) int reps;
+
 + (instancetype)sharedManager;
 - (instancetype) init;
 - (BOOL)connect;

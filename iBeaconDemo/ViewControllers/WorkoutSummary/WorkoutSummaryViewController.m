@@ -74,15 +74,17 @@
     }
     
     
-    NSString* totalCalories = [[[WorkoutManager sharedManager] totalCaloriesBurned] stringValue];
-    if (totalCalories != nil) {
-        _workoutSummaryView.workoutCaloriesBurned.text = [NSString stringWithFormat:@"Calories: %@", totalCalories];
-    }
+//    NSString* totalCalories = [[[WorkoutManager sharedManager] totalCaloriesBurned] stringValue];
+//    if (totalCalories != nil) {
+//        _workoutSummaryView.workoutCaloriesBurned.text = [NSString stringWithFormat:@"Calories: %@", totalCalories];
+//    }
+//    
+//    NSString* totalTimeElapsed = [[[WorkoutManager sharedManager] totalTimeElapsed] stringValue];
+//    if (totalTimeElapsed != nil) {
+//        _workoutSummaryView.workoutTimeElapsed.text = [NSString stringWithFormat:@"Total Time: %@", totalTimeElapsed];
+//    }
     
-    NSString* totalTimeElapsed = [[[WorkoutManager sharedManager] totalTimeElapsed] stringValue];
-    if (totalTimeElapsed != nil) {
-        _workoutSummaryView.workoutTimeElapsed.text = [NSString stringWithFormat:@"Total Time: %@", totalTimeElapsed];
-    }
+    [_workoutSummaryView resetSizes];
 }
 
 - (IBAction)clearWorkoutStats:(id)sender

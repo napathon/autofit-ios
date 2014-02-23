@@ -12,7 +12,6 @@
 @interface KiwiMoveManager()
 
 @property(nonatomic, strong) SocketIO *socketIO;
-@property(nonatomic) int reps;
 
 @end
 
@@ -23,6 +22,8 @@ static int _valueBuffer = 120;
 static float _detectionTreshold = 0.7f;
 
 @implementation KiwiMoveManager
+
+@synthesize reps = _reps;
 
 + (instancetype)sharedManager {
     static dispatch_once_t onceToken;
@@ -65,11 +66,12 @@ static float _detectionTreshold = 0.7f;
 }
 
 - (void)handleExerciseStarted:(NSNotification*)notification {
-    [self connect];
+    //[self connect];
+    self.reps = 0;
 }
 
 - (void)handleExerciseFinished:(NSNotification*)notification {
-    [self disconnect];
+    //[self disconnect];
 }
 
 - (void) socketIODidConnect:(SocketIO *)socket {

@@ -8,6 +8,7 @@
 
 #import "MachineSummaryViewController.h"
 #import "WorkoutManager.h"
+#import "KiwiMoveManager.h"
 
 @interface MachineSummaryViewController ()
 
@@ -136,7 +137,8 @@
 - (void)handleRepCompleted:(NSNotification*)notification
 {
     // update status message displayed
-    NSNumber* currentReps = notification.userInfo[@"repNum"];
+    //NSNumber* currentReps = notification.userInfo[@"repNum"];
+    NSNumber* currentReps = [NSNumber numberWithInt:[KiwiMoveManager sharedManager].reps];
     _machineSummaryView.caloriesBurnedCounterLabel.text = [currentReps stringValue];
 }
 

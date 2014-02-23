@@ -1,5 +1,6 @@
 #import "ExerciseSet.h"
 #import "WorkoutManager.h"
+#import "KiwiMoveManager.h"
 
 
 @interface ExerciseSet ()
@@ -29,6 +30,7 @@
 - (void) finishExerciseSet
 {
     self.endExercise = [NSDate date];
+    self.repetitions = [NSNumber numberWithInt:[KiwiMoveManager sharedManager].reps];
 }
 
 @end

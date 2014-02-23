@@ -51,6 +51,7 @@
     // Start iBeacon Ranging
     [[HackLocationManager sharedManager] initializeRegionMonitoring];
     [[KiwiMoveManager sharedManager] connect];
+    //[[KiwiMoveManager sharedManager] connect];
     
     // Set up Core Data Stack
     [MagicalRecord setupAutoMigratingCoreDataStack];
