@@ -45,6 +45,7 @@
 		D573F9231805C4A5001004B2 /* HackathonRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D573F91D1805C4A5001004B2 /* HackathonRootViewController.m */; };
 		D5A433401808415F00228EFC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D573F927180601B1001004B2 /* CoreLocation.framework */; };
 		D5A433421808417600228EFC /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A433411808417600228EFC /* CoreBluetooth.framework */; };
+		DB8E54E318B9965D00E866B2 /* KiwiMoveManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8E54E218B9965D00E866B2 /* KiwiMoveManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,7 +58,7 @@
 		2FE165CE18B972F600CAECF2 /* WorkoutSummaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorkoutSummaryView.h; path = Views/WorkoutSummary/WorkoutSummaryView.h; sourceTree = "<group>"; };
 		2FE165CF18B972F600CAECF2 /* WorkoutSummaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkoutSummaryView.m; path = Views/WorkoutSummary/WorkoutSummaryView.m; sourceTree = "<group>"; };
 		2FE165D218B980DC00CAECF2 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		2FE165D518B980F300CAECF2 /* Model1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = Model1.xcdatamodel; sourceTree = "<group>"; };
+		2FE165D518B980F300CAECF2 /* Model1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model1.xcdatamodel; sourceTree = "<group>"; };
 		2FE165E118B98CFE00CAECF2 /* _ExerciseSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _ExerciseSet.h; path = Models/_ExerciseSet.h; sourceTree = "<group>"; };
 		2FE165E218B98CFE00CAECF2 /* _ExerciseSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _ExerciseSet.m; path = Models/_ExerciseSet.m; sourceTree = "<group>"; };
 		2FE165E318B98CFE00CAECF2 /* _Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _Workout.h; path = Models/_Workout.h; sourceTree = "<group>"; };
@@ -91,6 +92,8 @@
 		D573F91D1805C4A5001004B2 /* HackathonRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HackathonRootViewController.m; sourceTree = "<group>"; };
 		D573F927180601B1001004B2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		D5A433411808417600228EFC /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		DB8E54E118B9965D00E866B2 /* KiwiMoveManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KiwiMoveManager.h; sourceTree = "<group>"; };
+		DB8E54E218B9965D00E866B2 /* KiwiMoveManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KiwiMoveManager.m; sourceTree = "<group>"; };
 		FEF6678433DC46ABA445CA43 /* Pods-hackathon.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hackathon.xcconfig"; path = "Pods/Pods-hackathon.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -247,6 +250,7 @@
 		D573F8E91805C469001004B2 /* hackathon */ = {
 			isa = PBXGroup;
 			children = (
+				DB8E54DD18B992EA00E866B2 /* KiwiMove */,
 				D573F9121805C4A5001004B2 /* hackathonDelegate.h */,
 				D573F9181805C4A5001004B2 /* hackathonDelegate.m */,
 				2FE165BE18B9712500CAECF2 /* Location Manager */,
@@ -271,6 +275,15 @@
 				D573F8F11805C469001004B2 /* hackathon-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DB8E54DD18B992EA00E866B2 /* KiwiMove */ = {
+			isa = PBXGroup;
+			children = (
+				DB8E54E118B9965D00E866B2 /* KiwiMoveManager.h */,
+				DB8E54E218B9965D00E866B2 /* KiwiMoveManager.m */,
+			);
+			name = KiwiMove;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -404,6 +417,7 @@
 				D573F91F1805C4A5001004B2 /* CSMBeaconRegion.m in Sources */,
 				D573F9211805C4A5001004B2 /* HackLocationManager.m in Sources */,
 				D573F9231805C4A5001004B2 /* HackathonRootViewController.m in Sources */,
+				DB8E54E318B9965D00E866B2 /* KiwiMoveManager.m in Sources */,
 				2FE165D318B980DC00CAECF2 /* Model.xcdatamodeld in Sources */,
 				2FE165E918B98CFE00CAECF2 /* _ExerciseSet.m in Sources */,
 				2FE165EC18B98CFE00CAECF2 /* Workout.m in Sources */,
@@ -556,6 +570,7 @@
 				2FE165D918B981F600CAECF2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D573F8DB1805C469001004B2 /* Build configuration list for PBXProject "hackathon" */ = {
 			isa = XCConfigurationList;
