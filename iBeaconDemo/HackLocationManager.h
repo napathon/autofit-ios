@@ -12,6 +12,12 @@
 
 @interface HackLocationManager : NSObject<CLLocationManagerDelegate>
 
+typedef NS_ENUM(NSUInteger, BeaconRangeEvent) {
+    kEnteredBeaconRange,
+    kAtBeacon,
+    kLeftBeaconRange
+};
+
 + (instancetype)sharedManager;
 - (void)initializePeripheralManager;
 - (void)initializeRegionMonitoring;

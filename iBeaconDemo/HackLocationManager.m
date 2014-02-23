@@ -80,12 +80,22 @@ static HackLocationManager *_sharedInstance = nil;
 
 #pragma mark - Notification Center Methods
 
+- (void)fireUpdateNotificationForStatus:(NSString*)status withType:(BeaconRangeEvent)eventType withInfo:(NSDictionary*)info
+{
+    // fire notification to update displayed status
+    [[NSNotificationCenter defaultCenter] postNotificationName:kLocationUpdateNotification
+                                                        object:Nil
+                                                      userInfo:@{@"statusMessage" : status,
+                                                                 @"eventType" : [NSNumber numberWithInt:eventType],
+                                                                 @"beaconInfo" : info}];
+}
+
 - (void)fireUpdateNotificationForStatus:(NSString*)status withInfo:(NSDictionary*)info
 {
     // fire notification to update displayed status
     [[NSNotificationCenter defaultCenter] postNotificationName:kLocationUpdateNotification
                                                         object:Nil
-                                                      userInfo:@{@"status" : status,
+                                                      userInfo:@{@"statusMessage" : status,
                                                                  @"beaconInfo" : info}];
 }
 
