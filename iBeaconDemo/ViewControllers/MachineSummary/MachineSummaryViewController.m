@@ -34,7 +34,6 @@
     [super viewDidLoad];
     self.title = @"Machine Summary";
 	_machineSummaryView = [[MachineSummaryView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
-    
     [self.view addSubview:_machineSummaryView];
 }
 
@@ -71,6 +70,10 @@
 {
     // update status message displayed
     _machineSummaryView.machineNameLabel.text = notification.userInfo[@"status"];
+    
+    NSDictionary* beaconInfo = notification.userInfo[@"beaconInfo"];
+    NSArray* beacons = [beaconInfo objectForKey:@"beacons"];
+    CLBeacon* beacon = [beaconInfo objectForKey:@"closestBeacon"];
     
     // log message for debugging
     NSLog(@"%@", notification.userInfo[@"status"]);

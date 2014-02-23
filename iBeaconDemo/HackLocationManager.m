@@ -86,7 +86,7 @@ static HackLocationManager *_sharedInstance = nil;
     [[NSNotificationCenter defaultCenter] postNotificationName:kLocationUpdateNotification
                                                         object:Nil
                                                       userInfo:@{@"status" : status,
-                                                                 @"info" : info}];
+                                                                 @"beaconInfo" : info}];
 }
 
 - (void)fireUpdateNotificationForStatus:(NSString*)status
@@ -234,18 +234,22 @@ static HackLocationManager *_sharedInstance = nil;
     // identify closest beacon in range
     if ([beacons count] > 0) {
         CLBeacon *closestBeacon = beacons[0];
+        
         NSString* notification = [NSString stringWithFormat:@"You are in the immediate vicinity of the beacon: Major: %@ Minor: %@ rssi: %i",[closestBeacon.major stringValue], [closestBeacon.minor stringValue], closestBeacon.rssi];
+        
+        NSDictionary* beaconInfo = @{@"closestBeacon":closestBeacon, @"beaconArray":beacons};
+        
         if (closestBeacon.proximity == CLProximityImmediate) {
             /**
              Provide proximity based information to user.  You may choose to do this repeatedly
              or only once depending on the use case.  Optionally use major, minor values here to provide beacon-specific content
              */
-            [self fireUpdateNotificationForStatus:notification];
+            [self fireUpdateNotificationForStatus:notification withInfo:beaconInfo];
             
         } else if (closestBeacon.proximity == CLProximityNear) {
             // detect other nearby beacons
             // optionally hide previously displayed proximity based information
-            [self fireUpdateNotificationForStatus:notification];
+            [self fireUpdateNotificationForStatus:notification withInfo:beaconInfo];
         }
     } else {
         // no beacons in range - signal may have been lost
