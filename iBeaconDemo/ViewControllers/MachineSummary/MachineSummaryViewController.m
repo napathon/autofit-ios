@@ -82,6 +82,8 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kLocationUpdateNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kWorkoutStartedNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kWorkoutFinishedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kRepCompletedNotification object:nil];
+    
     
     // Stop the timer
     [_updateUITimer invalidate];
@@ -139,6 +141,7 @@
     // update status message displayed
     //NSNumber* currentReps = notification.userInfo[@"repNum"];
     NSNumber* currentReps = [NSNumber numberWithInt:[KiwiMoveManager sharedManager].reps];
+    NSLog(@"%@", [[NSNumber numberWithInt:[KiwiMoveManager sharedManager].reps] stringValue]);
     _machineSummaryView.caloriesBurnedCounterLabel.text = [currentReps stringValue];
 }
 
