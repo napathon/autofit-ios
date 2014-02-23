@@ -12,10 +12,14 @@
 @interface KiwiMoveManager()
 
 @property(nonatomic, strong) SocketIO *socketIO;
+@property(nonatomic) int reps;
 
 @end
 
 static KiwiMoveManager *_sharedInstance = nil;
+static NSMutableArray *_accelerationLog;
+static int _currentElementIndex;
+static int _valueBuffer = 120;
 
 @implementation KiwiMoveManager
 
@@ -30,6 +34,9 @@ static KiwiMoveManager *_sharedInstance = nil;
 - (BOOL)connect {
     self.socketIO = [[SocketIO alloc] initWithDelegate:_sharedInstance];
     [self.socketIO connectToHost:@"build.kiwiwearables.com" onPort:8080];
+    self.reps = 0;
+    _accelerationLog = [ [NSMutableArray alloc] initWithCapacity:_valueBuffer ];
+    _currentElementIndex = -1;
     
     return true;
 }
@@ -56,9 +63,35 @@ static KiwiMoveManager *_sharedInstance = nil;
     NSLog(@"JSON received");
 }
 
+- (void) addData:(float)a {
+    _currentElementIndex = (_currentElementIndex + 1) % _valueBuffer;
+    [ _accelerationLog insertObject:[NSNumber numberWithFloat:a] atIndex:_currentElementIndex ];
+    NSLog(@"a: %f", a);
+}
+
+- (BOOL) repDetectedWithData:(float)a {
+    BOOL detected = false;
+    if ((_currentElementIndex >= 0) && abs(abs([(NSNumber *)[_accelerationLog objectAtIndex:_currentElementIndex] floatValue]) - abs(a)) > 0.5) {
+        detected = true;
+    }
+    [self addData:a];
+    return detected;
+}
+
+- (void)processDataAndNotify:(NSDictionary*) readout {
+    float ax = [[readout objectForKey:@"ax"] floatValue];
+    float ay = [[readout objectForKey:@"ay"] floatValue];
+    float az = [[readout objectForKey:@"az"] floatValue];
+    float a = sqrtf(ax*ax + ay*ay + az*az);
+    if ([self repDetectedWithData:a]) {
+        self.reps += 1;
+        [[NSNotificationCenter defaultCenter] postNotificationName:kRepCompletedNotification
+                                                            object:Nil
+                                                          userInfo:@{@"repNum" : [NSNumber numberWithFloat:self.reps]}];
+    }
+}
+
 - (void) socketIO:(SocketIO *)socket didReceiveEvent:(SocketIOPacket *)packet {
-    NSLog(@"didReceiveEvent() >>> data: %@", packet.data);
-    
     NSError *jsonParsingError = nil;
     NSDictionary *kiwireadout =
         [NSJSONSerialization
@@ -84,7 +117,7 @@ static KiwiMoveManager *_sharedInstance = nil;
                 NSLog(@"Error parsing JSON: %@", jsonParsingError);
             }
             else {
-                NSLog(@"ax: %@", [readout objectForKey:@"ax"]);
+                [self processDataAndNotify: readout];
             }
         }
     }
