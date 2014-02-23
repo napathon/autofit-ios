@@ -121,7 +121,7 @@
 //    _machineSummaryView.machineNameLabel.text = notification.userInfo[@"statusMessage"];
 //    
     // log message for debugging
-    NSLog(@"%@", notification.userInfo[@"statusMessage"]);
+    //NSLog(@"%@", notification.userInfo[@"statusMessage"]);
 }
 
 #pragma mark - Exercise Notification Handler Methods
@@ -137,6 +137,7 @@
 {
     // update status message displayed
     NSNumber* currentReps = notification.userInfo[@"repNum"];
+    _machineSummaryView.caloriesBurnedCounterLabel.text = [currentReps stringValue];
 }
 
 - (void)handleExerciseFinished:(NSNotification*)notification

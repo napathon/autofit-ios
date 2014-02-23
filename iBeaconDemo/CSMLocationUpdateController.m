@@ -163,7 +163,7 @@
     self.statusView.text = notification.userInfo[@"statusMessage"];
     
     // log message for debugging
-    NSLog(@"%@", notification.userInfo[@"statusMessage"]);
+    //NSLog(@"%@", notification.userInfo[@"statusMessage"]);
 }
 
 @end

@@ -91,7 +91,7 @@
 //    _workoutSummaryView.workoutNameLabel.text = notification.userInfo[@"statusMessage"];
 //    
     // log message for debugging
-    NSLog(@"%@", notification.userInfo[@"statusMessage"]);
+    //NSLog(@"%@", notification.userInfo[@"statusMessage"]);
 }
 
 #pragma mark - Exercise Notification Handler Methods

@@ -163,7 +163,7 @@
 //    CLBeacon* closestBeacon = notification.userInfo[@"closestBeacon"];
 //    
     // log message for debugging
-    NSLog(@"%@", notification.userInfo[@"statusMessage"]);
+    //NSLog(@"%@", notification.userInfo[@"statusMessage"]);
 }
 
 #pragma mark - Exercise Notification Handler Methods
