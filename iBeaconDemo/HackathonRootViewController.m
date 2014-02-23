@@ -2,8 +2,8 @@
 //  CSMRootViewController.m
 //  iBeacons_Demo
 //
-//  Created by Christopher Mann on 9/5/13.
-//  Copyright (c) 2013 Christopher Mann. All rights reserved.
+//  Created by napathon on 9/5/13.
+//  Copyright (c) 2013 napathon. All rights reserved.
 //
 
 #import "HackathonRootViewController.h"
@@ -21,7 +21,6 @@
 - (id)init {
     self = [super init];
     if (self) {
-        // soem change
     }
     return self;
 }

@@ -2,8 +2,8 @@
 //  CSMLocationUpdateController.m
 //  iBeacons_Demo
 //
-//  Created by Christopher Mann on 10/7/13.
-//  Copyright (c) 2013 Christopher Mann. All rights reserved.
+//  Created by napathon on 10/7/13.
+//  Copyright (c) 2013 napathon. All rights reserved.
 //
 
 #import "CSMLocationUpdateController.h"
