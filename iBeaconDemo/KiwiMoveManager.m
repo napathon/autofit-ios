@@ -58,5 +58,35 @@ static KiwiMoveManager *_sharedInstance = nil;
 
 - (void) socketIO:(SocketIO *)socket didReceiveEvent:(SocketIOPacket *)packet {
     NSLog(@"didReceiveEvent() >>> data: %@", packet.data);
+    
+    NSError *jsonParsingError = nil;
+    NSDictionary *kiwireadout =
+        [NSJSONSerialization
+            JSONObjectWithData:[packet.data dataUsingEncoding:NSUTF8StringEncoding]
+            options:0
+            error:&jsonParsingError];
+    
+    if (!kiwireadout) {
+        NSLog(@"Error parsing JSON: %@", jsonParsingError);
+    }
+    else {
+        if ([[kiwireadout objectForKey:@"name"] isEqualToString:@"listen_response"]) {
+            NSArray *args = [kiwireadout objectForKey:@"args"];
+            
+            NSDictionary *message = [args objectAtIndex:0];
+            
+            NSDictionary *readout = [NSJSONSerialization
+                                     JSONObjectWithData:[[message objectForKey:@"message"] dataUsingEncoding:NSUTF8StringEncoding]
+                                     options:0
+                                     error:&jsonParsingError];
+            
+            if (!readout) {
+                NSLog(@"Error parsing JSON: %@", jsonParsingError);
+            }
+            else {
+                NSLog(@"ax: %@", [readout objectForKey:@"ax"]);
+            }
+        }
+    }
 }
 @end
