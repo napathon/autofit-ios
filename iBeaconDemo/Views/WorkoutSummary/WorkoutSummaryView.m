@@ -15,6 +15,8 @@
 @synthesize workoutCaloriesBurned = _workoutCaloriesBurned;
 @synthesize workoutTimeElapsed = _workoutTimeElapsed;
 
+@synthesize clearWorkoutStats = _clearWorkoutStats;
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -31,6 +33,10 @@
         
         _workoutTimeElapsed = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 200.0, 250.0, 50.0)];
         [self addSubview:_workoutTimeElapsed];
+        
+        _clearWorkoutStats = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        _clearWorkoutStats.frame = CGRectMake(20.0, 250.0, 250.0, 50.0);
+        [self addSubview:_clearWorkoutStats];
         
     }
     return self;

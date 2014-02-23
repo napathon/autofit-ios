@@ -39,6 +39,7 @@
 		2FE1660018B9CB7E00CAECF2 /* HackathonUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE165FF18B9CB7E00CAECF2 /* HackathonUnitTests.m */; };
 		2FE1660A18B9CBDB00CAECF2 /* WorkoutManagerUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1660918B9CBDB00CAECF2 /* WorkoutManagerUnitTests.m */; };
 		2FE1660D18BA31FE00CAECF2 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1660C18BA31FE00CAECF2 /* MainView.m */; };
+		2FE1661118BA508700CAECF2 /* PebbleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1661018BA508700CAECF2 /* PebbleManager.m */; };
 		D573F8E41805C469001004B2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D573F8E31805C469001004B2 /* Foundation.framework */; };
 		D573F8E61805C469001004B2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D573F8E51805C469001004B2 /* CoreGraphics.framework */; };
 		D573F8E81805C469001004B2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D573F8E71805C469001004B2 /* UIKit.framework */; };
@@ -96,6 +97,8 @@
 		2FE1660918B9CBDB00CAECF2 /* WorkoutManagerUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkoutManagerUnitTests.m; path = WorkoutManager/WorkoutManagerUnitTests.m; sourceTree = "<group>"; };
 		2FE1660B18BA31FE00CAECF2 /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainView.h; path = Views/MainView/MainView.h; sourceTree = "<group>"; };
 		2FE1660C18BA31FE00CAECF2 /* MainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainView.m; path = Views/MainView/MainView.m; sourceTree = "<group>"; };
+		2FE1660F18BA508700CAECF2 /* PebbleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PebbleManager.h; path = PebbleManager/PebbleManager.h; sourceTree = "<group>"; };
+		2FE1661018BA508700CAECF2 /* PebbleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PebbleManager.m; path = PebbleManager/PebbleManager.m; sourceTree = "<group>"; };
 		5E3659CC8665415482218FF5 /* Pods-HackathonUnitTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackathonUnitTests.xcconfig"; path = "Pods/Pods-HackathonUnitTests.xcconfig"; sourceTree = "<group>"; };
 		A96A21F93E234BE9AB2A114F /* libPods-HackathonUnitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HackathonUnitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D51FA1226C274E14819EB9A7 /* libPods-hackathon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-hackathon.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -304,6 +307,15 @@
 			name = LocationManager;
 			sourceTree = "<group>";
 		};
+		2FE1660E18BA506B00CAECF2 /* PebbleManager */ = {
+			isa = PBXGroup;
+			children = (
+				2FE1660F18BA508700CAECF2 /* PebbleManager.h */,
+				2FE1661018BA508700CAECF2 /* PebbleManager.m */,
+			);
+			name = PebbleManager;
+			sourceTree = "<group>";
+		};
 		D573F8D71805C469001004B2 = {
 			isa = PBXGroup;
 			children = (
@@ -345,6 +357,7 @@
 			children = (
 				D573F9121805C4A5001004B2 /* hackathonDelegate.h */,
 				D573F9181805C4A5001004B2 /* hackathonDelegate.m */,
+				2FE1660E18BA506B00CAECF2 /* PebbleManager */,
 				DB8E54DD18B992EA00E866B2 /* KiwiMove */,
 				2FE165ED18B99F8700CAECF2 /* WorkoutManager */,
 				2FE165BE18B9712500CAECF2 /* Location Manager */,
@@ -580,6 +593,7 @@
 				D573F8F01805C469001004B2 /* main.m in Sources */,
 				2FE165C718B971A100CAECF2 /* MachineSummaryViewController.m in Sources */,
 				D573F9221805C4A5001004B2 /* CSMLocationUpdateController.m in Sources */,
+				2FE1661118BA508700CAECF2 /* PebbleManager.m in Sources */,
 				D573F91F1805C4A5001004B2 /* CSMBeaconRegion.m in Sources */,
 				D573F9211805C4A5001004B2 /* HackLocationManager.m in Sources */,
 				2FE165F018B99FAD00CAECF2 /* WorkoutManager.m in Sources */,

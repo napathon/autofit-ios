@@ -2,8 +2,8 @@
 //  MainView.h
 //  hackathon
 //
-//  Created by nazbot on 2/23/2014.
-//  Copyright (c) 2014 Christopher Mann. All rights reserved.
+//  Created by bgraner on 2/23/2014.
+//  Copyright (c) 2014 Napathon. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

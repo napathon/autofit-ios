@@ -7,6 +7,7 @@
 //
 
 #import "MachineSummaryViewController.h"
+#import "WorkoutManager.h"
 
 @interface MachineSummaryViewController ()
 
@@ -15,6 +16,7 @@
 @implementation MachineSummaryViewController
 
 @synthesize machineSummaryView = _machineSummaryView;
+@synthesize updateUITimer = _updateUITimer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -58,6 +60,12 @@
                                              selector:@selector(handleExerciseFinished:)
                                                  name:kWorkoutFinishedNotification
                                                object:nil];
+    
+    _updateUITimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                     target:self
+                                   selector:@selector(updateUI)
+                                   userInfo:nil
+                                    repeats:YES];
 }
 
 - (void) viewDidDisappear:(BOOL)animated
@@ -68,12 +76,34 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kLocationUpdateNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kWorkoutStartedNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kWorkoutFinishedNotification object:nil];
+    
+    // Stop the timer
+    [_updateUITimer invalidate];
+    _updateUITimer = nil;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - UI Methods
+
+- (void) updateUI
+{
+    [self updateUIWithName:[[WorkoutManager sharedManager] currentExerciseName] withStartTime:[[WorkoutManager sharedManager] currentExerciseStartTime]];
+}
+
+- (void) updateUIWithName:(NSString*)currentExerciseName withStartTime:(NSDate*)startTime
+{
+    // Current ex name
+    _machineSummaryView.machineNameLabel.text = currentExerciseName;
+    
+    // Elapsed Time
+    NSTimeInterval elapsedTime = [[WorkoutManager sharedManager] timeIntervalForStartTime:startTime];
+    NSString* elapsedTimeString = [NSString stringWithFormat:@"Elapsed Time: %f", elapsedTime];
+    _machineSummaryView.elapsedTimeLabel.text = elapsedTimeString;
 }
 
 

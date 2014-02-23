@@ -13,6 +13,7 @@
 @property (strong, nonatomic) UILabel* machineNameLabel;
 @property (strong, nonatomic) UILabel* startTimeLabel;
 @property (strong, nonatomic) UILabel* endTimeLabel;
+@property (strong, nonatomic) UILabel* elapsedTimeLabel;
 @property (strong, nonatomic) UILabel* caloriesBurnedLabel;
 
 @end

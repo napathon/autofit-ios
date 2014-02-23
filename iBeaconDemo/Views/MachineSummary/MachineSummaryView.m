@@ -13,6 +13,7 @@
 @synthesize machineNameLabel = _machineNameLabel;
 @synthesize startTimeLabel = _startTimeLabel;
 @synthesize endTimeLabel = _endTimeLabel;
+@synthesize elapsedTimeLabel = _elapsedTimeLabel;
 @synthesize caloriesBurnedLabel = _caloriesBurnedLabel;
 
 - (id)initWithFrame:(CGRect)frame
@@ -27,6 +28,9 @@
         
         _endTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 150.0, 250.0, 50.0)];
         [self addSubview:_endTimeLabel];
+        
+        _elapsedTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 200.0, 250.0, 50.0)];
+        [self addSubview:_elapsedTimeLabel];
         
         _caloriesBurnedLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 250.0, 300.0, 50.0)];
         [self addSubview:_caloriesBurnedLabel];

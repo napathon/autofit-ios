@@ -15,4 +15,6 @@
 @property (strong, nonatomic) UILabel* workoutCaloriesBurned;
 @property (strong, nonatomic) UILabel* workoutTimeElapsed;
 
+@property (strong, nonatomic) UIButton* clearWorkoutStats;
+
 @end

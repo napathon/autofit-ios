@@ -2,8 +2,8 @@
 //  WorkoutManager.h
 //  hackathon
 //
-//  Created by nazbot on 2/22/2014.
-//  Copyright (c) 2014 Christopher Mann. All rights reserved.
+//  Created by bgraner on 2/22/2014.
+//  Copyright (c) 2014 Napathon. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -23,9 +23,19 @@
 - (NSString*) exerciseNameForBeacon:(CLBeacon*)beacon;
 
 
+#pragma mark - Current Workout Methods
+
+- (BOOL) isExercising;
+- (NSString*) currentExerciseName;
+- (NSDate*) currentExerciseStartTime;
+- (NSTimeInterval) timeIntervalForStartTime:(NSDate*)startTime;
+- (NSTimeInterval) timeIntervalSinceExerciseStarted;
+
+
 #pragma mark - Workout Statistics Methods
 
 - (NSNumber*) numberOfExercises;
+- (void) clearAllExerciseStats;
 
 #pragma mark - NSNotification Methods
 

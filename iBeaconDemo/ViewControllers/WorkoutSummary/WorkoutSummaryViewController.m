@@ -33,6 +33,9 @@
 	_workoutSummaryView = [[WorkoutSummaryView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:_workoutSummaryView];
     
+    // Setup the clear workout stats button
+    [_workoutSummaryView.clearWorkoutStats addTarget:self action:@selector(clearWorkoutStats:) forControlEvents:UIControlEventTouchUpInside];
+    
     _workoutSummaryView.workoutNameLabel.text = @"Workout Name";
     [self updateWorkoutStatsUI];
 }
@@ -71,6 +74,11 @@
     if (numberExercise != nil) {
         _workoutSummaryView.workoutCountLabel.text = [numberExercise stringValue];
     }
+}
+
+- (IBAction)clearWorkoutStats:(id)sender
+{
+    
 }
 
 
