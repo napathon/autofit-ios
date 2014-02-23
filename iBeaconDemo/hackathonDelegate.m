@@ -46,6 +46,9 @@
     // Always set to region monitoring
     self.applicationMode = CSMApplicationModeRegionMonitoring;
     
+    // Set up Core Data Stack
+    [MagicalRecord setupAutoMigratingCoreDataStack];
+    
     return YES;
 }
 

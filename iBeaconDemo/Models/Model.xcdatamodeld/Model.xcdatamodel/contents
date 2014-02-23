@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="ExerciseSet" representedClassName="Workout" syncable="YES">
+        <attribute name="endExercise" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="exerciseName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="repetitions" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startExercise" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="workout" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Workout" inverseName="exerciseSets" inverseEntity="Workout" syncable="YES"/>
+    </entity>
+    <entity name="Workout" syncable="YES">
+        <attribute name="endWorkout" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="startWorkout" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="exerciseSets" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ExerciseSet" inverseName="workout" inverseEntity="ExerciseSet" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="ExerciseSet" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Workout" positionX="0" positionY="0" width="0" height="0"/>
+    </elements>
+</model>
