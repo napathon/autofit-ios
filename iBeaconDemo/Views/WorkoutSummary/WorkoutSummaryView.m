@@ -22,20 +22,25 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        _workoutNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 50.0, 250.0, 50.0)];
+        _workoutNameLabel = [self setupBitmapFontViewWithFrame:CGRectMake(20.0, 100.0, 250.0, 50.0)];
+        _workoutNameLabel.text = @"Workout Stats";
         [self addSubview:_workoutNameLabel];
         
-        _workoutCountLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 100.0, 250.0, 50.0)];
+        _workoutCountLabel = [self setupBitmapFontViewWithFrame:CGRectMake(20.0, 200.0, 250.0, 50.0)];
+        _workoutCountLabel.text = @"0";
         [self addSubview:_workoutCountLabel];
         
-        _workoutCaloriesBurned = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 150.0, 250.0, 50.0)];
+        _workoutCaloriesBurned = [self setupBitmapFontViewWithFrame:CGRectMake(20.0, 300.0, 250.0, 50.0)];
+        _workoutCaloriesBurned.text = @"0";
         [self addSubview:_workoutCaloriesBurned];
         
-        _workoutTimeElapsed = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 200.0, 250.0, 50.0)];
+        _workoutTimeElapsed = [self setupBitmapFontViewWithFrame:CGRectMake(20.0, 200.0, 250.0, 50.0)];
+        _workoutTimeElapsed.text = @"0";
         [self addSubview:_workoutTimeElapsed];
         
         _clearWorkoutStats = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        _clearWorkoutStats.frame = CGRectMake(20.0, 250.0, 250.0, 50.0);
+        _clearWorkoutStats.frame = CGRectMake(20.0, 300.0, 250.0, 50.0);
+        [_clearWorkoutStats setTitle:@"Reset Stats" forState:UIControlStateNormal];
         [self addSubview:_clearWorkoutStats];
         
         // Set background color
@@ -55,9 +60,17 @@
     v.numberOfRightPaddingDot  = 2;
     v.glowSize = 20.0;
     v.innerGlowSize = 3.0;
-    v.edgeLength = 2.0;
+    v.edgeLength = 1.5;
     return v;
     [v resetSize];
+}
+
+- (void) resetSizes
+{
+    [_workoutNameLabel resetSize];
+    [_workoutCountLabel resetSize];
+    [_workoutCaloriesBurned resetSize];
+    [_workoutTimeElapsed resetSize];
 }
 
 /*

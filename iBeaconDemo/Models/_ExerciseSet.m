@@ -43,6 +43,11 @@ const struct ExerciseSetFetchedProperties ExerciseSetFetchedProperties = {
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
+	if ([key isEqualToString:@"repetitionsValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"repetitions"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
 
 	return keyPaths;
 }
@@ -66,6 +71,25 @@ const struct ExerciseSetFetchedProperties ExerciseSetFetchedProperties = {
 
 @dynamic repetitions;
 
+
+
+- (int16_t)repetitionsValue {
+	NSNumber *result = [self repetitions];
+	return [result shortValue];
+}
+
+- (void)setRepetitionsValue:(int16_t)value_ {
+	[self setRepetitions:[NSNumber numberWithShort:value_]];
+}
+
+- (int16_t)primitiveRepetitionsValue {
+	NSNumber *result = [self primitiveRepetitions];
+	return [result shortValue];
+}
+
+- (void)setPrimitiveRepetitionsValue:(int16_t)value_ {
+	[self setPrimitiveRepetitions:[NSNumber numberWithShort:value_]];
+}
 
 
 

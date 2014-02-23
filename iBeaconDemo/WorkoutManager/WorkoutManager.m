@@ -144,6 +144,16 @@ static WorkoutManager *_sharedInstance = nil;
     return [NSNumber numberWithInt:[ExerciseSet MR_countOfEntities]];
 }
 
+- (NSNumber*) totalCaloriesBurned
+{
+    NSArray* exerciseArray = [ExerciseSet MR_findAll];
+    __block int totalCalories = 0;
+    [exerciseArray enumerateObjectsUsingBlock:^(ExerciseSet* exerciseSet, NSUInteger idx, BOOL *stop) {
+        totalCalories += [exerciseSet.repetitions intValue];
+    }];
+    return [NSNumber numberWithInt:[ExerciseSet MR_countOfEntities]];
+}
+
 - (void) clearAllExerciseStats
 {
     [ExerciseSet MR_truncateAll];

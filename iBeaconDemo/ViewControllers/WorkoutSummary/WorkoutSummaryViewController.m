@@ -35,8 +35,6 @@
     
     // Setup the clear workout stats button
     [_workoutSummaryView.clearWorkoutStats addTarget:self action:@selector(clearWorkoutStats:) forControlEvents:UIControlEventTouchUpInside];
-    
-    _workoutSummaryView.workoutNameLabel.text = @"Workout Name";
     [self updateWorkoutStatsUI];
 }
 
@@ -72,13 +70,15 @@
 {
     NSNumber* numberExercise = [[WorkoutManager sharedManager] numberOfExercises];
     if (numberExercise != nil) {
-        _workoutSummaryView.workoutCountLabel.text = [numberExercise stringValue];
+        _workoutSummaryView.workoutCountLabel.text = [NSString stringWithFormat:@"Machines: %@", [numberExercise stringValue]];
+        _workoutSummaryView.workoutCaloriesBurned.text = [NSString stringWithFormat:@"Calories: %@", [numberExercise stringValue]];
+        _workoutSummaryView.workoutTimeElapsed.text = [NSString stringWithFormat:@"Total Time: %@", [numberExercise stringValue]];
     }
 }
 
 - (IBAction)clearWorkoutStats:(id)sender
 {
-    
+    [[WorkoutManager sharedManager] clearAllExerciseStats];
 }
 
 

@@ -58,9 +58,13 @@ extern const struct ExerciseSetFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSString* repetitions;
+@property (nonatomic, strong) NSNumber* repetitions;
 
 
+
+@property int16_t repetitionsValue;
+- (int16_t)repetitionsValue;
+- (void)setRepetitionsValue:(int16_t)value_;
 
 //- (BOOL)validateRepetitions:(id*)value_ error:(NSError**)error_;
 
@@ -107,8 +111,11 @@ extern const struct ExerciseSetFetchedProperties {
 
 
 
-- (NSString*)primitiveRepetitions;
-- (void)setPrimitiveRepetitions:(NSString*)value;
+- (NSNumber*)primitiveRepetitions;
+- (void)setPrimitiveRepetitions:(NSNumber*)value;
+
+- (int16_t)primitiveRepetitionsValue;
+- (void)setPrimitiveRepetitionsValue:(int16_t)value_;
 
 
 
