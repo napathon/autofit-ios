@@ -28,6 +28,16 @@ static float _detectionTreshold = 1.0f;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedInstance = [[KiwiMoveManager alloc] init];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(handleExerciseStarted:)
+                                                     name:kWorkoutStartedNotification
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(handleExerciseFinished:)
+                                                     name:kWorkoutFinishedNotification
+                                                   object:nil];
     });
     return _sharedInstance;
 }
@@ -44,6 +54,14 @@ static float _detectionTreshold = 1.0f;
 
 - (void)disconnect {
     [self.socketIO disconnect];
+}
+
+- (void)handleExerciseStarted:(NSNotification*)notification {
+    [self connect];
+}
+
+- (void)handleExerciseFinished:(NSNotification*)notification {
+    [self disconnect];
 }
 
 - (void) socketIODidConnect:(SocketIO *)socket {
