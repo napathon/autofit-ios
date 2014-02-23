@@ -14,7 +14,10 @@
 @property (strong, nonatomic) ExerciseSet* currentExerciseSet;
 
 + (instancetype)sharedManager;
-- (void) recordExerciseSetForBeacon:(CLBeacon*)closestBeacon;
+
+- (void) startExerciseSetForBeacon:(CLBeacon*)closestBeacon;
+- (void) startExerciseSetWithName:(NSString*)name;
+
 - (void) finishRecordingExerciseSet;
 
 - (NSString*) exerciseNameForBeacon:(CLBeacon*)beacon;

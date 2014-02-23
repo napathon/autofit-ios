@@ -9,3 +9,11 @@ target "hackathon" do
 
 end
 
+target "HackathonUnitTests" do
+    
+    pod 'MagicalRecord', '~> 2.2'
+    pod 'AFNetworking', '~> 2.1.0'
+    pod 'socket.IO', '~> 0.4.1'
+    
+end
+

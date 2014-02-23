@@ -255,7 +255,7 @@ static HackLocationManager *_sharedInstance = nil;
         
         if (closestBeacon.proximity == CLProximityImmediate) {
             // Update which exercise we are recording based on the closest
-            [[WorkoutManager sharedManager] recordExerciseSetForBeacon:closestBeacon];
+            [[WorkoutManager sharedManager] startExerciseSetForBeacon:closestBeacon];
             [self fireUpdateNotificationForStatus:notification withInfo:beaconInfo];
             
         } else if (closestBeacon.proximity == CLProximityNear) {
