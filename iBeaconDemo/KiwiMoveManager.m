@@ -8,6 +8,12 @@
 #import "KiwiMoveManager.h"
 #import <SocketIO.h>
 
+@interface KiwiMoveManager()
+
+@property(nonatomic, strong) SocketIO *socketIO;
+
+@end
+
 static KiwiMoveManager *_sharedInstance = nil;
 
 @implementation KiwiMoveManager
@@ -21,24 +27,35 @@ static KiwiMoveManager *_sharedInstance = nil;
 }
 
 - (BOOL)connect {
-    SocketIO *socketIO = [[SocketIO alloc] initWithDelegate:_sharedInstance];
-    [socketIO connectToHost:@"build.kiwiwearables.com" onPort:8080];
+    self.socketIO = [[SocketIO alloc] initWithDelegate:_sharedInstance];
+    [self.socketIO connectToHost:@"build.kiwiwearables.com" onPort:8080];
      
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setObject:@"device_id" forKey:@"30"];
-    [dict setObject:@"password" forKey:@"123"];
+    [dict setObject:@"30" forKey:@"device_id"];
+    [dict setObject:@"123" forKey:@"password"];
     
-    [socketIO sendEvent:@"listen" withData:dict];
+    [self.socketIO sendEvent:@"listen" withData:dict];
     
     return true;
 }
 
+- (void) socketIODidConnect:(SocketIO *)socket {
+    NSLog(@"socket connected");
+}
+
+- (void) socketIODidDisconnect:(SocketIO *)socket disconnectedWithError:(NSError *)error {
+    NSLog(@"socket disconnected");
+}
+
 - (void) socketIO:(SocketIO *)socket didReceiveMessage:(SocketIOPacket *)packet {
+    NSLog(@"message received");
 }
 
 - (void) socketIO:(SocketIO *)socket didReceiveJSON:(SocketIOPacket *)packet {
+    NSLog(@"JSON received");
 }
 
 - (void) socketIO:(SocketIO *)socket didReceiveEvent:(SocketIOPacket *)packet {
+    NSLog(@"event received");
 }
 @end

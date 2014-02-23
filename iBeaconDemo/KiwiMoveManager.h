@@ -10,4 +10,7 @@
 
 @interface KiwiMoveManager : NSObject<SocketIODelegate>
 
++ (instancetype)sharedManager;
+- (BOOL)connect;
+
 @end
