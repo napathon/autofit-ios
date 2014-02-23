@@ -28,6 +28,14 @@ static float _detectionTreshold = 0.7f;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedInstance = [[KiwiMoveManager alloc] init];
+    });
+    return _sharedInstance;
+}
+
+- (instancetype) init
+{
+    self = [super init];
+    if (self) {
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(handleExerciseStarted:)
@@ -38,8 +46,8 @@ static float _detectionTreshold = 0.7f;
                                                  selector:@selector(handleExerciseFinished:)
                                                      name:kWorkoutFinishedNotification
                                                    object:nil];
-    });
-    return _sharedInstance;
+    }
+    return self;
 }
 
 - (BOOL)connect {

@@ -71,6 +71,9 @@ static WorkoutManager *_sharedInstance = nil;
         [self fireWorkoutFinishedNotificationWithExerciseName:_currentExerciseSet.exerciseName];
         [_currentExerciseSet finishExerciseSet];
         
+        // Save the context
+        //[[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreAndWait];
+        
         // Update the Pebble
         [[PebbleManager sharedManager] updatePebbleFinishedExercise:_currentExerciseSet];
         _currentExerciseSet = nil;

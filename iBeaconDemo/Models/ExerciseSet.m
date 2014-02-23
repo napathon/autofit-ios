@@ -29,7 +29,6 @@
 - (void) finishExerciseSet
 {
     self.endExercise = [NSDate date];
-    [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
 }
 
 @end

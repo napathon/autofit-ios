@@ -30,7 +30,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.rootViewController = [[HackathonRootViewController alloc] init];
-    
+ 
     // define navbar appearance
     [[UINavigationBar appearance] setBarTintColor:kAppTintColor];
     [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
