@@ -11,6 +11,7 @@
 @implementation WorkoutSummaryView
 
 @synthesize workoutNameLabel = _workoutNameLabel;
+@synthesize workoutCountLabel = _workoutCountLabel;
 @synthesize workoutCaloriesBurned = _workoutCaloriesBurned;
 @synthesize workoutTimeElapsed = _workoutTimeElapsed;
 
@@ -22,10 +23,13 @@
         _workoutNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 50.0, 250.0, 50.0)];
         [self addSubview:_workoutNameLabel];
         
-        _workoutCaloriesBurned = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 100.0, 250.0, 50.0)];
+        _workoutCountLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 100.0, 250.0, 50.0)];
+        [self addSubview:_workoutCountLabel];
+        
+        _workoutCaloriesBurned = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 150.0, 250.0, 50.0)];
         [self addSubview:_workoutCaloriesBurned];
         
-        _workoutTimeElapsed = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 150.0, 250.0, 50.0)];
+        _workoutTimeElapsed = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 200.0, 250.0, 50.0)];
         [self addSubview:_workoutTimeElapsed];
         
     }

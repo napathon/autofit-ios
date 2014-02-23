@@ -7,6 +7,7 @@
 //
 
 #import "WorkoutSummaryViewController.h"
+#import "WorkoutManager.h"
 
 @interface WorkoutSummaryViewController ()
 
@@ -33,6 +34,7 @@
     [self.view addSubview:_workoutSummaryView];
     
     _workoutSummaryView.workoutNameLabel.text = @"Workout Name";
+    [self updateWorkoutStatsUI];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -44,6 +46,7 @@
                                              selector:@selector(handleLocationUpdate:)
                                                  name:kLocationUpdateNotification
                                                object:nil];
+    [self updateWorkoutStatsUI];
 }
 
 - (void) viewDidDisappear:(BOOL)animated
@@ -58,6 +61,16 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - UI Methods
+
+- (void) updateWorkoutStatsUI
+{
+    NSNumber* numberExercise = [[WorkoutManager sharedManager] numberOfExercises];
+    if (numberExercise != nil) {
+        _workoutSummaryView.workoutCountLabel.text = [numberExercise stringValue];
+    }
 }
 
 

@@ -14,8 +14,15 @@
 @property (strong, nonatomic) ExerciseSet* currentExerciseSet;
 
 + (instancetype)sharedManager;
-- (void) updateExerciseSetForBeacon:(CLBeacon*)closestBeacon;
+- (void) recordExerciseSetForBeacon:(CLBeacon*)closestBeacon;
 - (void) finishRecordingExerciseSet;
+
+- (NSString*) exerciseNameForBeacon:(CLBeacon*)beacon;
+
+
+#pragma mark - Workout Statistics Methods
+
+- (NSNumber*) numberOfExercises;
 
 
 @end
