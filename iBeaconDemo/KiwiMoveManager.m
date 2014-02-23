@@ -12,10 +12,14 @@
 @interface KiwiMoveManager()
 
 @property(nonatomic, strong) SocketIO *socketIO;
+@property(nonatomic) int reps;
 
 @end
 
 static KiwiMoveManager *_sharedInstance = nil;
+static NSMutableArray *_accelerationLog;
+static int _nextElementIndex;
+static int _valueBuffer = 120;
 
 @implementation KiwiMoveManager
 
@@ -23,6 +27,9 @@ static KiwiMoveManager *_sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedInstance = [[KiwiMoveManager alloc] init];
+        _accelerationLog = [ [NSMutableArray alloc] initWithCapacity:_valueBuffer ];
+        _nextElementIndex = 0;
+        
     });
     return _sharedInstance;
 }
@@ -30,6 +37,7 @@ static KiwiMoveManager *_sharedInstance = nil;
 - (BOOL)connect {
     self.socketIO = [[SocketIO alloc] initWithDelegate:_sharedInstance];
     [self.socketIO connectToHost:@"build.kiwiwearables.com" onPort:8080];
+    self.reps = 0;
     
     return true;
 }
@@ -56,9 +64,17 @@ static KiwiMoveManager *_sharedInstance = nil;
     NSLog(@"JSON received");
 }
 
+- (void) addData:(float)az {
+    [ _accelerationLog insertObject:[NSNumber numberWithFloat:az] atIndex:_nextElementIndex ];
+    _nextElementIndex = (_nextElementIndex + 1) % _valueBuffer;
+    NSLog(@"az: %f", az);
+}
+
+- (BOOL) repDetected {
+    return false;
+}
+
 - (void) socketIO:(SocketIO *)socket didReceiveEvent:(SocketIOPacket *)packet {
-    NSLog(@"didReceiveEvent() >>> data: %@", packet.data);
-    
     NSError *jsonParsingError = nil;
     NSDictionary *kiwireadout =
         [NSJSONSerialization
@@ -84,7 +100,12 @@ static KiwiMoveManager *_sharedInstance = nil;
                 NSLog(@"Error parsing JSON: %@", jsonParsingError);
             }
             else {
-                NSLog(@"ax: %@", [readout objectForKey:@"ax"]);
+                float az = [[readout objectForKey:@"az"] floatValue];
+                [self addData:az];
+                if ([self repDetected]) {
+                    self.reps += 1;
+                    NSLog(@"Rep %d", self.reps);
+                }
             }
         }
     }
