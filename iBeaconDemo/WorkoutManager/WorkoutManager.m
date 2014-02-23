@@ -22,7 +22,7 @@ static WorkoutManager *_sharedInstance = nil;
     return _sharedInstance;
 }
 
-- (void) updateExerciseSetForBeacon:(CLBeacon*)closestBeacon
+- (void) recordExerciseSetForBeacon:(CLBeacon*)closestBeacon
 {
     // No exercise was being recorded
     if (_currentExerciseSet == nil) {
@@ -50,7 +50,7 @@ static WorkoutManager *_sharedInstance = nil;
     if (_currentExerciseSet == nil) {
         return;
     } else {
-        // TODO: Stop recording our info and save
+        [_currentExerciseSet finishExerciseSet];
         _currentExerciseSet = nil;
     }
 }
@@ -69,6 +69,13 @@ static WorkoutManager *_sharedInstance = nil;
         exerciseName = @"Shoulder Press";
     }
     return exerciseName;
+}
+
+#pragma mark - Workout Statistics Methods
+
+- (NSNumber*) numberOfExercises
+{
+    return [NSNumber numberWithInt:[ExerciseSet MR_countOfEntities]];
 }
 
 @end

@@ -11,6 +11,7 @@
 @interface WorkoutSummaryView : UIView
 
 @property (strong, nonatomic) UILabel* workoutNameLabel;
+@property (strong, nonatomic) UILabel* workoutCountLabel;
 @property (strong, nonatomic) UILabel* workoutCaloriesBurned;
 @property (strong, nonatomic) UILabel* workoutTimeElapsed;
 
