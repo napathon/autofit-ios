@@ -20,7 +20,7 @@ static KiwiMoveManager *_sharedInstance = nil;
 static NSMutableArray *_accelerationLog;
 static int _currentElementIndex;
 static int _valueBuffer = 120;
-static float _detectionTreshold = 1.0f;
+static float _detectionTreshold = 0.7f;
 
 @implementation KiwiMoveManager
 
