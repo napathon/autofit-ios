@@ -2,11 +2,12 @@
 //  CSMAppDelegate.m
 //  iBeacons_Demo
 //
-//  Created by Christopher Mann on 9/5/13.
-//  Copyright (c) 2013 Christopher Mann. All rights reserved.
+//  Created by napathon on 9/5/13.
+//  Copyright (c) 2013 napathon. All rights reserved.
 //
 
 #import "hackathonDelegate.h"
+#import "HackLocationManager.h"
 
 #define kMyStoreNumber 1
 #define kWeeklySpecialItemNumber 1
@@ -42,6 +43,15 @@
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.tintColor = kAppTintColor;
     [self.window makeKeyAndVisible];
+    
+    // Always set to region monitoring
+    self.applicationMode = CSMApplicationModeRegionMonitoring;
+    
+    // Start iBeacon Ranging
+    [[HackLocationManager sharedManager] initializeRegionMonitoring];
+    
+    // Set up Core Data Stack
+    [MagicalRecord setupAutoMigratingCoreDataStack];
     
     return YES;
 }

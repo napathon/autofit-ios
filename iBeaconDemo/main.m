@@ -2,8 +2,8 @@
 //  main.m
 //  iBeaconDemo
 //
-//  Created by Christopher Mann on 10/9/13.
-//  Copyright (c) 2013 Christopher Mann. All rights reserved.
+//  Created by napathon on 10/9/13.
+//  Copyright (c) 2013 napathon. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

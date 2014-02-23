@@ -2,19 +2,17 @@
 //  CSMLocationManager.m
 //  iBeacons_Demo
 //
-//  Created by Christopher Mann on 9/5/13.
-//  Copyright (c) 2013 Christopher Mann. All rights reserved.
+//  Created by napathon on 9/5/13.
+//  Copyright (c) 2013 napathon. All rights reserved.
 //
 
-#import "CSMLocationManager.h"
+#import "HackLocationManager.h"
 #import "CSMLocationUpdateController.h"
 #import "hackathonDelegate.h"
 #import "CSMBeaconRegion.h"
 #import <CoreBluetooth/CoreBluetooth.h>
 
-#define kLocationUpdateNotification @"updateNotification"
-
-@interface CSMLocationManager () <CBPeripheralManagerDelegate>
+@interface HackLocationManager () <CBPeripheralManagerDelegate>
 
 @property (nonatomic, strong) CLLocationManager     *locationManager;
 @property (nonatomic, strong) CBPeripheralManager   *peripheralManager;
@@ -25,14 +23,14 @@
 
 @end
 
-static CSMLocationManager *_sharedInstance = nil;
+static HackLocationManager *_sharedInstance = nil;
 
-@implementation CSMLocationManager
+@implementation HackLocationManager
 
 + (instancetype)sharedManager {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _sharedInstance = [[CSMLocationManager alloc] init];
+        _sharedInstance = [[HackLocationManager alloc] init];
     });
     return _sharedInstance;
 }
@@ -79,7 +77,20 @@ static CSMLocationManager *_sharedInstance = nil;
     [self fireUpdateNotificationForStatus:@"Welcome!  You have entered the target region."];
 }
 
-- (void)fireUpdateNotificationForStatus:(NSString*)status {
+
+#pragma mark - Notification Center Methods
+
+- (void)fireUpdateNotificationForStatus:(NSString*)status withInfo:(NSDictionary*)info
+{
+    // fire notification to update displayed status
+    [[NSNotificationCenter defaultCenter] postNotificationName:kLocationUpdateNotification
+                                                        object:Nil
+                                                      userInfo:@{@"status" : status,
+                                                                 @"info" : info}];
+}
+
+- (void)fireUpdateNotificationForStatus:(NSString*)status
+{
     // fire notification to update displayed status
     [[NSNotificationCenter defaultCenter] postNotificationName:kLocationUpdateNotification
                                                         object:Nil
