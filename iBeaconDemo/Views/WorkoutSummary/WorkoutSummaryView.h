@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FBDigitalFont/FBBitmapFontView.h>
 
 @interface WorkoutSummaryView : UIView
 
@@ -16,5 +17,7 @@
 @property (strong, nonatomic) UILabel* workoutTimeElapsed;
 
 @property (strong, nonatomic) UIButton* clearWorkoutStats;
+
+- (FBBitmapFontView*)setupBitmapFontViewWithFrame:(CGRect)frame;
 
 @end

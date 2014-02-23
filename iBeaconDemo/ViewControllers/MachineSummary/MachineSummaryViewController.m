@@ -93,17 +93,17 @@
 - (void) updateUI
 {
     [self updateUIWithName:[[WorkoutManager sharedManager] currentExerciseName] withStartTime:[[WorkoutManager sharedManager] currentExerciseStartTime]];
+    [_machineSummaryView resetSizes];
 }
 
 - (void) updateUIWithName:(NSString*)currentExerciseName withStartTime:(NSDate*)startTime
 {
-    // Current ex name
+    // Update Exercise name
     _machineSummaryView.machineNameLabel.text = currentExerciseName;
     
-    // Elapsed Time
+    // Update Elapsed Time
     NSTimeInterval elapsedTime = [[WorkoutManager sharedManager] timeIntervalForStartTime:startTime];
-    NSString* elapsedTimeString = [NSString stringWithFormat:@"Elapsed Time: %f", elapsedTime];
-    _machineSummaryView.elapsedTimeLabel.text = elapsedTimeString;
+    _machineSummaryView.elapsedTimeCounterLabel.text = [NSString stringWithFormat:@"%f", elapsedTime];
 }
 
 

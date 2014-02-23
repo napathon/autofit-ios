@@ -38,8 +38,26 @@
         _clearWorkoutStats.frame = CGRectMake(20.0, 250.0, 250.0, 50.0);
         [self addSubview:_clearWorkoutStats];
         
+        // Set background color
+        self.backgroundColor = [UIColor blackColor];
+        
     }
     return self;
+}
+
+- (FBBitmapFontView*)setupBitmapFontViewWithFrame:(CGRect)frame
+{
+    FBBitmapFontView *v = [[FBBitmapFontView alloc] initWithFrame:frame];
+    v.text = @"BITMAP";
+    v.numberOfBottomPaddingDot = 1;
+    v.numberOfTopPaddingDot    = 1;
+    v.numberOfLeftPaddingDot   = 2;
+    v.numberOfRightPaddingDot  = 2;
+    v.glowSize = 20.0;
+    v.innerGlowSize = 3.0;
+    v.edgeLength = 2.0;
+    return v;
+    [v resetSize];
 }
 
 /*

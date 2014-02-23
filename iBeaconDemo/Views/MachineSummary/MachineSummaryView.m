@@ -8,34 +8,86 @@
 
 #import "MachineSummaryView.h"
 
+
 @implementation MachineSummaryView
 
+@synthesize machineNameTitleLabel = _machineNameTitleLabel;
 @synthesize machineNameLabel = _machineNameLabel;
+
 @synthesize startTimeLabel = _startTimeLabel;
 @synthesize endTimeLabel = _endTimeLabel;
+
 @synthesize elapsedTimeLabel = _elapsedTimeLabel;
+@synthesize elapsedTimeCounterLabel = _elapsedTimeCounterLabel;
+
 @synthesize caloriesBurnedLabel = _caloriesBurnedLabel;
+@synthesize caloriesBurnedCounterLabel = _caloriesBurnedCounterLabel;
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _machineNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 50.0, 250.0, 50.0)];
+        
+        // Machine Name
+        _machineNameTitleLabel = [self setupBitmapFontViewWithFrame:CGRectMake(10.0, 100.0, 250.0, 50.0)];
+        _machineNameTitleLabel.text = @"Machine Name";
+        [self addSubview:_machineNameTitleLabel];
+        
+        _machineNameLabel = [self setupBitmapFontViewWithFrame:CGRectMake(10.0, 150.0, 250.0, 50.0)];
+        _machineNameLabel.text = @"n/a";
         [self addSubview:_machineNameLabel];
         
-        _startTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 100.0, 250.0, 50.0)];
-        [self addSubview:_startTimeLabel];
         
-        _endTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 150.0, 250.0, 50.0)];
-        [self addSubview:_endTimeLabel];
-        
-        _elapsedTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 200.0, 250.0, 50.0)];
+        // Elapsed Time
+        _elapsedTimeLabel = [self setupBitmapFontViewWithFrame:CGRectMake(10.0, 225.0, 250.0, 50.0)];
+        _elapsedTimeLabel.text = @"Elapsed Time";
         [self addSubview:_elapsedTimeLabel];
         
-        _caloriesBurnedLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 250.0, 300.0, 50.0)];
+        _elapsedTimeCounterLabel = [self setupBitmapFontViewWithFrame:CGRectMake(10.0, 275.0, 250.0, 50.0)];
+        _caloriesBurnedCounterLabel.text = @"0";
+        [self addSubview:_elapsedTimeCounterLabel];
+        
+        
+        // Calories Burned
+        _caloriesBurnedLabel = [self setupBitmapFontViewWithFrame:CGRectMake(10.0, 350.0, 250.0, 50.0)];
+        _caloriesBurnedLabel.text = @"Calories";
         [self addSubview:_caloriesBurnedLabel];
+        
+        _caloriesBurnedCounterLabel = [self setupBitmapFontViewWithFrame:CGRectMake(10.0, 400.0, 250.0, 50.0)];
+        _caloriesBurnedCounterLabel.text = @"0";
+        [self addSubview:_caloriesBurnedCounterLabel];
+        
+        [self resetSizes];
+        
+        // Set background color
+        self.backgroundColor = [UIColor blackColor];
     }
     return self;
+}
+
+- (FBBitmapFontView*)setupBitmapFontViewWithFrame:(CGRect)frame
+{
+    FBBitmapFontView *v = [[FBBitmapFontView alloc] initWithFrame:frame];
+    v.text = @"BITMAP";
+    v.numberOfBottomPaddingDot = 1;
+    v.numberOfTopPaddingDot    = 1;
+    v.numberOfLeftPaddingDot   = 2;
+    v.numberOfRightPaddingDot  = 2;
+    v.glowSize = 20.0;
+    v.innerGlowSize = 3.0;
+    v.edgeLength = 1.5;
+    return v;
+    [v resetSize];
+}
+
+- (void) resetSizes
+{
+    [_machineNameLabel resetSize];
+    [_startTimeLabel resetSize];
+    [_endTimeLabel resetSize];
+    [_elapsedTimeLabel resetSize];
+    [_elapsedTimeCounterLabel resetSize];
+    [_caloriesBurnedLabel resetSize];
 }
 
 //- (void) layoutSubviews

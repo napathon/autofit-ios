@@ -16,6 +16,8 @@
 
 #import "HackLocationManager.h"
 
+#import <FBDigitalFont/FBBitmapFontView.h>
+
 #define kHorizontalPadding 20
 #define kVerticalPadding 10
 
@@ -41,7 +43,7 @@
     [super viewDidLoad];
     
     self.title = @"Autofit";
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor blackColor];
     
     self.instructionLabel = [UILabel new];
     self.instructionLabel.textAlignment = NSTextAlignmentCenter;
@@ -49,6 +51,7 @@
     self.instructionLabel.numberOfLines = 0;
     self.instructionLabel.text = @"Do you want to see your current machine stats or full workout stats?";
     self.instructionLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.instructionLabel.textColor = [UIColor orangeColor];
     [self.view addSubview:self.instructionLabel];
     
     self.segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"Current Machine",@"Workout Summary"]];
@@ -175,6 +178,23 @@
 - (void)handleExerciseFinished:(NSNotification*)notification
 {
     self.currentWorkoutName.text = @"Not currently exercising";
+}
+
+#pragma mark - Bitmap View Methods
+
+- (FBBitmapFontView*)setupBitmapFontViewWithFrame:(CGRect)frame
+{
+    FBBitmapFontView *v = [[FBBitmapFontView alloc] initWithFrame:frame];
+    v.text = @"BITMAP";
+    v.numberOfBottomPaddingDot = 1;
+    v.numberOfTopPaddingDot    = 1;
+    v.numberOfLeftPaddingDot   = 2;
+    v.numberOfRightPaddingDot  = 2;
+    v.glowSize = 20.0;
+    v.innerGlowSize = 3.0;
+    v.edgeLength = 1.5;
+    return v;
+    [v resetSize];
 }
 
 @end
