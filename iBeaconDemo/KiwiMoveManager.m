@@ -20,6 +20,7 @@ static KiwiMoveManager *_sharedInstance = nil;
 static NSMutableArray *_accelerationLog;
 static int _currentElementIndex;
 static int _valueBuffer = 120;
+static float _detectionTreshold = 1.0f;
 
 @implementation KiwiMoveManager
 
@@ -39,6 +40,10 @@ static int _valueBuffer = 120;
     _currentElementIndex = -1;
     
     return true;
+}
+
+- (void)disconnect {
+    [self.socketIO disconnect];
 }
 
 - (void) socketIODidConnect:(SocketIO *)socket {
@@ -71,7 +76,7 @@ static int _valueBuffer = 120;
 
 - (BOOL) repDetectedWithData:(float)a {
     BOOL detected = false;
-    if ((_currentElementIndex >= 0) && abs(abs([(NSNumber *)[_accelerationLog objectAtIndex:_currentElementIndex] floatValue]) - abs(a)) > 0.5) {
+    if ((_currentElementIndex >= 0) && abs(abs([(NSNumber *)[_accelerationLog objectAtIndex:_currentElementIndex] floatValue]) - abs(a)) > _detectionTreshold) {
         detected = true;
     }
     [self addData:a];
