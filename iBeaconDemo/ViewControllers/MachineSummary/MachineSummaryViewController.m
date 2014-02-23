@@ -46,6 +46,18 @@
                                              selector:@selector(handleLocationUpdate:)
                                                  name:kLocationUpdateNotification
                                                object:nil];
+    
+    // Add the location update notification observer
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleExerciseStarted:)
+                                                 name:kWorkoutStartedNotification
+                                               object:nil];
+    
+    // Add the location update notification observer
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleExerciseFinished:)
+                                                 name:kWorkoutFinishedNotification
+                                               object:nil];
 }
 
 - (void) viewDidDisappear:(BOOL)animated
@@ -54,6 +66,8 @@
     
     // Remove the location update notification observer
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kLocationUpdateNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kWorkoutStartedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kWorkoutFinishedNotification object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,15 +82,25 @@
 
 - (void)handleLocationUpdate:(NSNotification*)notification
 {
-    // update status message displayed
-    _machineSummaryView.machineNameLabel.text = notification.userInfo[@"status"];
-    
-    NSDictionary* beaconInfo = notification.userInfo[@"beaconInfo"];
-    NSArray* beacons = [beaconInfo objectForKey:@"beacons"];
-    CLBeacon* closestBeacon = [beaconInfo objectForKey:@"closestBeacon"];
-    
+//    // update status message displayed
+//    _machineSummaryView.machineNameLabel.text = notification.userInfo[@"statusMessage"];
+//    
     // log message for debugging
-    NSLog(@"%@", notification.userInfo[@"status"]);
+    NSLog(@"%@", notification.userInfo[@"statusMessage"]);
+}
+
+#pragma mark - Exercise Notification Handler Methods
+
+- (void)handleExerciseStarted:(NSNotification*)notification
+{
+    // update status message displayed
+    NSString* currentExerciseName = notification.userInfo[@"exerciseName"];
+    _machineSummaryView.machineNameLabel.text = [NSString stringWithFormat:@"Currently doing %@", currentExerciseName];
+}
+
+- (void)handleExerciseFinished:(NSNotification*)notification
+{
+    _machineSummaryView.machineNameLabel.text = @"Not currently exercising";
 }
 
 

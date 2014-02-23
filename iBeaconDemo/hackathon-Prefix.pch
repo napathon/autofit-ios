@@ -14,6 +14,9 @@
 
 #define kLocationUpdateNotification @"K_LOCATION_NOTIFICATION"
 
+#define kWorkoutStartedNotification @"K_WORKOUT_STARTED_NOTIFICATION"
+#define kWorkoutFinishedNotification @"K_WORKOUT_FINISHED_NOTIFICATION"
+
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 

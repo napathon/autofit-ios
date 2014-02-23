@@ -79,11 +79,24 @@
 
 - (void)handleLocationUpdate:(NSNotification*)notification
 {
-    // update status message displayed
-    _workoutSummaryView.workoutNameLabel.text = notification.userInfo[@"status"];
-    
+//    // update status message displayed
+//    _workoutSummaryView.workoutNameLabel.text = notification.userInfo[@"statusMessage"];
+//    
     // log message for debugging
-    NSLog(@"%@", notification.userInfo[@"status"]);
+    NSLog(@"%@", notification.userInfo[@"statusMessage"]);
+}
+
+#pragma mark - Exercise Notification Handler Methods
+
+- (void)handleExerciseStarted:(NSNotification*)notification
+{
+    // update status message displayed
+    [self updateWorkoutStatsUI];
+}
+
+- (void)handleExerciseFinished:(NSNotification*)notification
+{
+    [self updateWorkoutStatsUI];
 }
 
 @end

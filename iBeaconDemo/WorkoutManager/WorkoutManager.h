@@ -27,5 +27,12 @@
 
 - (NSNumber*) numberOfExercises;
 
+#pragma mark - NSNotification Methods
+
+- (void)fireWorkoutStartedNotificationWithBeacon:(CLBeacon*)beacon;
+- (void)fireWorkoutStartedNotificationWithExerciseName:(NSString*)name;
+- (void)fireWorkoutFinishedNotificationWithBeacon:(CLBeacon*)beacon;
+- (void)fireWorkoutFinishedNotificationWithExerciseName:(NSString*)name;
+
 
 @end

@@ -31,23 +31,26 @@ static WorkoutManager *_sharedInstance = nil;
 
 - (void) startExerciseSetWithName:(NSString*)name
 {
-    // No exercise was being recorded
     if (_currentExerciseSet == nil) {
+        // No exercise was being recorded
         _currentExerciseSet = [ExerciseSet exerciseSetWithName:name];
+        [self fireWorkoutStartedNotificationWithExerciseName:name];
         [self updatePebbleStartExercise:_currentExerciseSet];
-    }
-    // Exercise was already being recorded
-    else {
+    } else {
+        // Exercise was already being recorded
         NSString* currentExerciseName = _currentExerciseSet.exerciseName;
         
-        // If we are in the same exercise region continue to just record
         if ([name compare:currentExerciseName] == NSOrderedSame) {
+            // If we are in the same exercise region continue to just record
             // Don't do anything, we are still doing the same exercise
-        }
+        } else {
         // Otherwise stop recording and save, start recording new exercise info
-        else {
-            // TODO: Finish recording the current exercise / beacon's information
+            // Finished recording current exercise
+            [self finishRecordingExerciseSet];
+            
+            // Start recording new exercise
             _currentExerciseSet = [ExerciseSet exerciseSetWithName:name];
+            [self fireWorkoutStartedNotificationWithExerciseName:name];
             [self updatePebbleStartExercise:_currentExerciseSet];
         }
     }
@@ -63,6 +66,8 @@ static WorkoutManager *_sharedInstance = nil;
     if (_currentExerciseSet == nil) {
         return;
     } else {
+        // Update listening controllers
+        [self fireWorkoutFinishedNotificationWithExerciseName:_currentExerciseSet.exerciseName];
         [_currentExerciseSet finishExerciseSet];
         
         // Update the Pebble
@@ -117,9 +122,9 @@ static WorkoutManager *_sharedInstance = nil;
     
     // We only need to use the minor numbers
     NSString* exerciseName = @"";
-    if ([beacon.minor compare:[NSNumber numberWithInt:237]] == NSOrderedSame) {
+    if ([beacon.minor compare:[NSNumber numberWithInt:2137]] == NSOrderedSame) {
         exerciseName = @"Treadmill";
-    } else if ([beacon.minor compare:[NSNumber numberWithInt:237]] == NSOrderedSame) {
+    } else if ([beacon.minor compare:[NSNumber numberWithInt:2134]] == NSOrderedSame) {
         exerciseName = @"Shoulder Press";
     }
     return exerciseName;
@@ -131,5 +136,38 @@ static WorkoutManager *_sharedInstance = nil;
 {
     return [NSNumber numberWithInt:[ExerciseSet MR_countOfEntities]];
 }
+
+#pragma mark - NSNotification Methods
+
+- (void)fireWorkoutStartedNotificationWithBeacon:(CLBeacon*)beacon
+{
+    NSString* exerciseName = [self exerciseNameForBeacon:beacon];
+    [self fireWorkoutStartedNotificationWithExerciseName:exerciseName];
+}
+
+- (void)fireWorkoutStartedNotificationWithExerciseName:(NSString*)name
+{
+    // fire notification to update displayed status
+    [[NSNotificationCenter defaultCenter] postNotificationName:kWorkoutStartedNotification
+                                                        object:Nil
+                                                      userInfo:@{@"exerciseName" : name
+                                                                 }];
+}
+
+- (void)fireWorkoutFinishedNotificationWithBeacon:(CLBeacon*)beacon
+{
+    NSString* exerciseName = [self exerciseNameForBeacon:beacon];
+    [self fireWorkoutStartedNotificationWithExerciseName:exerciseName];
+}
+
+- (void)fireWorkoutFinishedNotificationWithExerciseName:(NSString*)name
+{
+    // fire notification to update displayed status
+    [[NSNotificationCenter defaultCenter] postNotificationName:kWorkoutFinishedNotification
+                                                        object:Nil
+                                                      userInfo:@{@"exerciseName" : name
+                                                                 }];
+}
+
 
 @end
