@@ -6,12 +6,31 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		2FE165D618B981F600CAECF2 /* Mogenerator */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 2FE165D718B981F600CAECF2 /* Build configuration list for PBXAggregateTarget "Mogenerator" */;
+			buildPhases = (
+				2FE165DA18B981FF00CAECF2 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Mogenerator;
+			productName = Mogenerator;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		03A848A4BBD7457AA57B9FD4 /* libPods-hackathon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D51FA1226C274E14819EB9A7 /* libPods-hackathon.a */; };
 		2FE165C418B9718600CAECF2 /* WorkoutSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE165C318B9718600CAECF2 /* WorkoutSummaryViewController.m */; };
 		2FE165C718B971A100CAECF2 /* MachineSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE165C618B971A100CAECF2 /* MachineSummaryViewController.m */; };
 		2FE165CD18B972E100CAECF2 /* MachineSummaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE165CC18B972E100CAECF2 /* MachineSummaryView.m */; };
 		2FE165D018B972F600CAECF2 /* WorkoutSummaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE165CF18B972F600CAECF2 /* WorkoutSummaryView.m */; };
+		2FE165D318B980DC00CAECF2 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2FE165D118B980DC00CAECF2 /* Model.xcdatamodeld */; };
+		2FE165E918B98CFE00CAECF2 /* _ExerciseSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE165E218B98CFE00CAECF2 /* _ExerciseSet.m */; };
+		2FE165EA18B98CFE00CAECF2 /* _Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE165E418B98CFE00CAECF2 /* _Workout.m */; };
+		2FE165EB18B98CFE00CAECF2 /* ExerciseSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE165E618B98CFE00CAECF2 /* ExerciseSet.m */; };
+		2FE165EC18B98CFE00CAECF2 /* Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE165E818B98CFE00CAECF2 /* Workout.m */; };
 		D573F8E41805C469001004B2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D573F8E31805C469001004B2 /* Foundation.framework */; };
 		D573F8E61805C469001004B2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D573F8E51805C469001004B2 /* CoreGraphics.framework */; };
 		D573F8E81805C469001004B2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D573F8E71805C469001004B2 /* UIKit.framework */; };
@@ -21,12 +40,11 @@
 		D573F91E1805C4A5001004B2 /* hackathonDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D573F9181805C4A5001004B2 /* hackathonDelegate.m */; };
 		D573F91F1805C4A5001004B2 /* CSMBeaconRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = D573F9191805C4A5001004B2 /* CSMBeaconRegion.m */; };
 		D573F9201805C4A5001004B2 /* HackathonHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D573F91A1805C4A5001004B2 /* HackathonHomeViewController.m */; };
-		D573F9211805C4A5001004B2 /* CSMLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D573F91B1805C4A5001004B2 /* CSMLocationManager.m */; };
+		D573F9211805C4A5001004B2 /* HackLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D573F91B1805C4A5001004B2 /* HackLocationManager.m */; };
 		D573F9221805C4A5001004B2 /* CSMLocationUpdateController.m in Sources */ = {isa = PBXBuildFile; fileRef = D573F91C1805C4A5001004B2 /* CSMLocationUpdateController.m */; };
 		D573F9231805C4A5001004B2 /* HackathonRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D573F91D1805C4A5001004B2 /* HackathonRootViewController.m */; };
 		D5A433401808415F00228EFC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D573F927180601B1001004B2 /* CoreLocation.framework */; };
 		D5A433421808417600228EFC /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A433411808417600228EFC /* CoreBluetooth.framework */; };
-		DB33F3F318B98DFC0057D9B0 /* KiwiController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB33F3F218B98DFC0057D9B0 /* KiwiController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +56,16 @@
 		2FE165CC18B972E100CAECF2 /* MachineSummaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MachineSummaryView.m; path = Views/MachineSummary/MachineSummaryView.m; sourceTree = "<group>"; };
 		2FE165CE18B972F600CAECF2 /* WorkoutSummaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorkoutSummaryView.h; path = Views/WorkoutSummary/WorkoutSummaryView.h; sourceTree = "<group>"; };
 		2FE165CF18B972F600CAECF2 /* WorkoutSummaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkoutSummaryView.m; path = Views/WorkoutSummary/WorkoutSummaryView.m; sourceTree = "<group>"; };
+		2FE165D218B980DC00CAECF2 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		2FE165D518B980F300CAECF2 /* Model1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = Model1.xcdatamodel; sourceTree = "<group>"; };
+		2FE165E118B98CFE00CAECF2 /* _ExerciseSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _ExerciseSet.h; path = Models/_ExerciseSet.h; sourceTree = "<group>"; };
+		2FE165E218B98CFE00CAECF2 /* _ExerciseSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _ExerciseSet.m; path = Models/_ExerciseSet.m; sourceTree = "<group>"; };
+		2FE165E318B98CFE00CAECF2 /* _Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _Workout.h; path = Models/_Workout.h; sourceTree = "<group>"; };
+		2FE165E418B98CFE00CAECF2 /* _Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _Workout.m; path = Models/_Workout.m; sourceTree = "<group>"; };
+		2FE165E518B98CFE00CAECF2 /* ExerciseSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExerciseSet.h; path = Models/ExerciseSet.h; sourceTree = "<group>"; };
+		2FE165E618B98CFE00CAECF2 /* ExerciseSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExerciseSet.m; path = Models/ExerciseSet.m; sourceTree = "<group>"; };
+		2FE165E718B98CFE00CAECF2 /* Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Workout.h; path = Models/Workout.h; sourceTree = "<group>"; };
+		2FE165E818B98CFE00CAECF2 /* Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Workout.m; path = Models/Workout.m; sourceTree = "<group>"; };
 		D51FA1226C274E14819EB9A7 /* libPods-hackathon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-hackathon.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D573F8E01805C469001004B2 /* hackathon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hackathon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D573F8E31805C469001004B2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -52,19 +80,17 @@
 		D573F9121805C4A5001004B2 /* hackathonDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hackathonDelegate.h; sourceTree = "<group>"; };
 		D573F9131805C4A5001004B2 /* CSMBeaconRegion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSMBeaconRegion.h; sourceTree = "<group>"; };
 		D573F9141805C4A5001004B2 /* HackathonHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HackathonHomeViewController.h; sourceTree = "<group>"; };
-		D573F9151805C4A5001004B2 /* CSMLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSMLocationManager.h; sourceTree = "<group>"; };
+		D573F9151805C4A5001004B2 /* HackLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HackLocationManager.h; sourceTree = "<group>"; };
 		D573F9161805C4A5001004B2 /* CSMLocationUpdateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSMLocationUpdateController.h; sourceTree = "<group>"; };
 		D573F9171805C4A5001004B2 /* HackathonRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HackathonRootViewController.h; sourceTree = "<group>"; };
 		D573F9181805C4A5001004B2 /* hackathonDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hackathonDelegate.m; sourceTree = "<group>"; };
 		D573F9191805C4A5001004B2 /* CSMBeaconRegion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSMBeaconRegion.m; sourceTree = "<group>"; };
 		D573F91A1805C4A5001004B2 /* HackathonHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HackathonHomeViewController.m; sourceTree = "<group>"; };
-		D573F91B1805C4A5001004B2 /* CSMLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSMLocationManager.m; sourceTree = "<group>"; };
+		D573F91B1805C4A5001004B2 /* HackLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HackLocationManager.m; sourceTree = "<group>"; };
 		D573F91C1805C4A5001004B2 /* CSMLocationUpdateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSMLocationUpdateController.m; sourceTree = "<group>"; };
 		D573F91D1805C4A5001004B2 /* HackathonRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HackathonRootViewController.m; sourceTree = "<group>"; };
 		D573F927180601B1001004B2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		D5A433411808417600228EFC /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
-		DB33F3F118B98DFC0057D9B0 /* KiwiController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KiwiController.h; sourceTree = "<group>"; };
-		DB33F3F218B98DFC0057D9B0 /* KiwiController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KiwiController.m; sourceTree = "<group>"; };
 		FEF6678433DC46ABA445CA43 /* Pods-hackathon.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hackathon.xcconfig"; path = "Pods/Pods-hackathon.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,7 +124,6 @@
 		2FE165BD18B9711600CAECF2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				DB33F3ED18B98CD40057D9B0 /* KiwiMove */,
 				2FE165C118B9713F00CAECF2 /* MachineSummary */,
 				2FE165C018B9713900CAECF2 /* WorkoutSummary */,
 				2FE165BF18B9713500CAECF2 /* Main */,
@@ -109,8 +134,8 @@
 		2FE165BE18B9712500CAECF2 /* Location Manager */ = {
 			isa = PBXGroup;
 			children = (
-				D573F9151805C4A5001004B2 /* CSMLocationManager.h */,
-				D573F91B1805C4A5001004B2 /* CSMLocationManager.m */,
+				D573F9151805C4A5001004B2 /* HackLocationManager.h */,
+				D573F91B1805C4A5001004B2 /* HackLocationManager.m */,
 				D573F9131805C4A5001004B2 /* CSMBeaconRegion.h */,
 				D573F9191805C4A5001004B2 /* CSMBeaconRegion.m */,
 			);
@@ -171,6 +196,22 @@
 			name = Main;
 			sourceTree = "<group>";
 		};
+		2FE165D418B980E200CAECF2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2FE165E118B98CFE00CAECF2 /* _ExerciseSet.h */,
+				2FE165E218B98CFE00CAECF2 /* _ExerciseSet.m */,
+				2FE165E518B98CFE00CAECF2 /* ExerciseSet.h */,
+				2FE165E618B98CFE00CAECF2 /* ExerciseSet.m */,
+				2FE165E318B98CFE00CAECF2 /* _Workout.h */,
+				2FE165E418B98CFE00CAECF2 /* _Workout.m */,
+				2FE165E718B98CFE00CAECF2 /* Workout.h */,
+				2FE165E818B98CFE00CAECF2 /* Workout.m */,
+				2FE165D118B980DC00CAECF2 /* Model.xcdatamodeld */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		D573F8D71805C469001004B2 = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +250,7 @@
 				D573F9121805C4A5001004B2 /* hackathonDelegate.h */,
 				D573F9181805C4A5001004B2 /* hackathonDelegate.m */,
 				2FE165BE18B9712500CAECF2 /* Location Manager */,
+				2FE165D418B980E200CAECF2 /* Models */,
 				2FE165BC18B9711000CAECF2 /* Views */,
 				2FE165BD18B9711600CAECF2 /* Controllers */,
 				D573F9161805C4A5001004B2 /* CSMLocationUpdateController.h */,
@@ -229,15 +271,6 @@
 				D573F8F11805C469001004B2 /* hackathon-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		DB33F3ED18B98CD40057D9B0 /* KiwiMove */ = {
-			isa = PBXGroup;
-			children = (
-				DB33F3F118B98DFC0057D9B0 /* KiwiController.h */,
-				DB33F3F218B98DFC0057D9B0 /* KiwiController.m */,
-			);
-			name = KiwiMove;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,6 +323,7 @@
 			projectRoot = "";
 			targets = (
 				D573F8DF1805C469001004B2 /* hackathon */,
+				2FE165D618B981F600CAECF2 /* Mogenerator */,
 			);
 		};
 /* End PBXProject section */
@@ -307,6 +341,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2FE165DA18B981FF00CAECF2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "mogenerator -m ${SRCROOT}/iBeaconDemo/Models/Model.xcdatamodeld -O ${SRCROOT}/iBeaconDemo/Models --template-var arc=true";
+		};
 		E5A0FBE4F1C4421DA3786E4E /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -345,17 +392,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FE165D018B972F600CAECF2 /* WorkoutSummaryView.m in Sources */,
+				2FE165EA18B98CFE00CAECF2 /* _Workout.m in Sources */,
 				D573F91E1805C4A5001004B2 /* hackathonDelegate.m in Sources */,
+				2FE165EB18B98CFE00CAECF2 /* ExerciseSet.m in Sources */,
 				2FE165C418B9718600CAECF2 /* WorkoutSummaryViewController.m in Sources */,
-				DB33F3F318B98DFC0057D9B0 /* KiwiController.m in Sources */,
 				D573F9201805C4A5001004B2 /* HackathonHomeViewController.m in Sources */,
 				2FE165CD18B972E100CAECF2 /* MachineSummaryView.m in Sources */,
 				D573F8F01805C469001004B2 /* main.m in Sources */,
 				2FE165C718B971A100CAECF2 /* MachineSummaryViewController.m in Sources */,
 				D573F9221805C4A5001004B2 /* CSMLocationUpdateController.m in Sources */,
 				D573F91F1805C4A5001004B2 /* CSMBeaconRegion.m in Sources */,
-				D573F9211805C4A5001004B2 /* CSMLocationManager.m in Sources */,
+				D573F9211805C4A5001004B2 /* HackLocationManager.m in Sources */,
 				D573F9231805C4A5001004B2 /* HackathonRootViewController.m in Sources */,
+				2FE165D318B980DC00CAECF2 /* Model.xcdatamodeld in Sources */,
+				2FE165E918B98CFE00CAECF2 /* _ExerciseSet.m in Sources */,
+				2FE165EC18B98CFE00CAECF2 /* Workout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +424,20 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2FE165D818B981F600CAECF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2FE165D918B981F600CAECF2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		D573F90A1805C46A001004B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -484,6 +549,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2FE165D718B981F600CAECF2 /* Build configuration list for PBXAggregateTarget "Mogenerator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2FE165D818B981F600CAECF2 /* Debug */,
+				2FE165D918B981F600CAECF2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		D573F8DB1805C469001004B2 /* Build configuration list for PBXProject "hackathon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -503,6 +576,21 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2FE165D118B980DC00CAECF2 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2FE165D518B980F300CAECF2 /* Model1.xcdatamodel */,
+				2FE165D218B980DC00CAECF2 /* Model.xcdatamodel */,
+			);
+			currentVersion = 2FE165D518B980F300CAECF2 /* Model1.xcdatamodel */;
+			name = Model.xcdatamodeld;
+			path = Models/Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D573F8D81805C469001004B2 /* Project object */;
 }

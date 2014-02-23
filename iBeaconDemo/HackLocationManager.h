@@ -10,18 +10,13 @@
 #import <CoreLocation/CoreLocation.h>
 
 
-@interface CSMLocationManager : NSObject<CLLocationManagerDelegate>
+@interface HackLocationManager : NSObject<CLLocationManagerDelegate>
 
 + (instancetype)sharedManager;
-
 - (void)initializePeripheralManager;
-
 - (void)initializeRegionMonitoring;
-
 - (void)stopMonitoringForRegion:(CLBeaconRegion*)region;
-
 - (void)stopAdvertisingBeacon;
-
 - (void)fireUpdateNotificationForStatus:(NSString*)status;
 - (void)fireUpdateNotificationForStatus:(NSString*)status withInfo:(NSDictionary*)info;
 

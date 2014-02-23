@@ -6,15 +6,13 @@
 //  Copyright (c) 2013 napathon. All rights reserved.
 //
 
-#import "CSMLocationManager.h"
+#import "HackLocationManager.h"
 #import "CSMLocationUpdateController.h"
 #import "hackathonDelegate.h"
 #import "CSMBeaconRegion.h"
 #import <CoreBluetooth/CoreBluetooth.h>
 
-#define kLocationUpdateNotification @"updateNotification"
-
-@interface CSMLocationManager () <CBPeripheralManagerDelegate>
+@interface HackLocationManager () <CBPeripheralManagerDelegate>
 
 @property (nonatomic, strong) CLLocationManager     *locationManager;
 @property (nonatomic, strong) CBPeripheralManager   *peripheralManager;
@@ -25,14 +23,14 @@
 
 @end
 
-static CSMLocationManager *_sharedInstance = nil;
+static HackLocationManager *_sharedInstance = nil;
 
-@implementation CSMLocationManager
+@implementation HackLocationManager
 
 + (instancetype)sharedManager {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _sharedInstance = [[CSMLocationManager alloc] init];
+        _sharedInstance = [[HackLocationManager alloc] init];
     });
     return _sharedInstance;
 }
