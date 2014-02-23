@@ -2,8 +2,8 @@
 //  MachineSummaryViewController.m
 //  hackathon
 //
-//  Created by nazbot on 2/22/2014.
-//  Copyright (c) 2014 Christopher Mann. All rights reserved.
+//  Created by bgraner on 2/22/2014.
+//  Copyright (c) 2014 napathon. All rights reserved.
 //
 
 #import "MachineSummaryViewController.h"
@@ -14,11 +14,13 @@
 
 @implementation MachineSummaryViewController
 
+@synthesize machineSummaryView = _machineSummaryView;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
 }
@@ -26,7 +28,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    self.title = @"Machine Summary";
+	_machineSummaryView = [[MachineSummaryView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
+    [_machineSummaryView setBackgroundColor:[UIColor redColor]];
+    [self.view addSubview:_machineSummaryView];
 }
 
 - (void)didReceiveMemoryWarning
