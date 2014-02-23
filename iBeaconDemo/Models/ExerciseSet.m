@@ -13,11 +13,16 @@
 
 + (ExerciseSet*) exerciseSetWithBeacon:(CLBeacon*)beacon
 {
+    ExerciseSet* exerciseSet = [self exerciseSetWithName:[[WorkoutManager sharedManager] exerciseNameForBeacon:beacon]];
+    return exerciseSet;
+}
+
++ (ExerciseSet*) exerciseSetWithName:(NSString*)name
+{
     ExerciseSet* exerciseSet = [ExerciseSet MR_createEntity];
-    exerciseSet.exerciseName = [[WorkoutManager sharedManager] exerciseNameForBeacon:beacon];
     exerciseSet.startExercise = [NSDate date];
     exerciseSet.endExercise = [NSDate date];
-    
+    exerciseSet.exerciseName = name;
     return exerciseSet;
 }
 

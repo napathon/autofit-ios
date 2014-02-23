@@ -16,7 +16,7 @@ typedef NS_ENUM(NSUInteger, CSMApplicationMode) {
 
 #define kUniqueRegionIdentifier @"iBeacon Demo"
 
-#define kAppTintColor [UIColor colorWithRed:0.12 green:0.50 blue:0.15 alpha:1.0]
+#define kAppTintColor [UIColor orangeColor]
 
 
 @interface hackathonDelegate : UIResponder <UIApplicationDelegate>

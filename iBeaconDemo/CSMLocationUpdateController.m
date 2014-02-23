@@ -160,10 +160,10 @@
 - (void)handleStatusUpdate:(NSNotification*)notification {
     
     // update status message displayed
-    self.statusView.text = notification.userInfo[@"status"];
+    self.statusView.text = notification.userInfo[@"statusMessage"];
     
     // log message for debugging
-    NSLog(@"%@", notification.userInfo[@"status"]);
+    //NSLog(@"%@", notification.userInfo[@"statusMessage"]);
 }
 
 @end

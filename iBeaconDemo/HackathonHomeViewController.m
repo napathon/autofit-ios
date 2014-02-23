@@ -16,6 +16,8 @@
 
 #import "HackLocationManager.h"
 
+#import <FBDigitalFont/FBBitmapFontView.h>
+
 #define kHorizontalPadding 20
 #define kVerticalPadding 10
 
@@ -23,6 +25,7 @@
 
 @property (nonatomic, strong) UILabel            *instructionLabel;
 @property (nonatomic, strong) UISegmentedControl *segmentedControl;
+@property (nonatomic, strong) UILabel            *currentWorkoutName;
 
 @end
 
@@ -40,7 +43,7 @@
     [super viewDidLoad];
     
     self.title = @"Autofit";
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor blackColor];
     
     self.instructionLabel = [UILabel new];
     self.instructionLabel.textAlignment = NSTextAlignmentCenter;
@@ -48,6 +51,7 @@
     self.instructionLabel.numberOfLines = 0;
     self.instructionLabel.text = @"Do you want to see your current machine stats or full workout stats?";
     self.instructionLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.instructionLabel.textColor = [UIColor orangeColor];
     [self.view addSubview:self.instructionLabel];
     
     self.segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"Current Machine",@"Workout Summary"]];
@@ -56,12 +60,22 @@
     [self.segmentedControl addTarget:self action:@selector(chooseDetailView:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:self.segmentedControl];
     
+    self.currentWorkoutName = [[UILabel alloc] init];
+    self.currentWorkoutName.textAlignment = NSTextAlignmentCenter;
+    self.currentWorkoutName.preferredMaxLayoutWidth = self.view.frame.size.width - 2*kHorizontalPadding;
+    self.currentWorkoutName.numberOfLines = 0;
+    self.currentWorkoutName.translatesAutoresizingMaskIntoConstraints = NO;
+    self.currentWorkoutName.text = @"Not currently working out";
+    [self.view addSubview:self.currentWorkoutName];
+    
+    
     // define auto layout constraints
     NSDictionary *constraintMetrics = @{@"horizontalPadding" : @kHorizontalPadding,
                                        @"verticalPadding" : @(5*kVerticalPadding),
                                         @"verticalSpacing" : @(2*kVerticalPadding)};
     NSDictionary *constraintViews = @{@"label" : self.instructionLabel,
                                        @"segmentedControl" : self.segmentedControl,
+                                      @"currentWorkoutName" : self.currentWorkoutName,
                                       @"topGuide" : self.topLayoutGuide};
     
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-horizontalPadding-[label]-horizontalPadding-|"
@@ -74,10 +88,48 @@
                                                                       metrics:constraintMetrics
                                                                         views:constraintViews]];
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[topGuide]-verticalPadding-[label]-verticalSpacing-[segmentedControl(==60)]-(>=verticalPadding)-|"
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-horizontalPadding-[currentWorkoutName]-horizontalPadding-|"
                                                                       options:0
                                                                       metrics:constraintMetrics
                                                                         views:constraintViews]];
+    
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[topGuide]-verticalPadding-[label]-verticalSpacing-[segmentedControl(==60)]-verticalSpacing-[currentWorkoutName]-(>=verticalPadding)-|"
+                                                                      options:0
+                                                                      metrics:constraintMetrics
+                                                                        views:constraintViews]];
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    // Add the location update notification observer
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleLocationUpdate:)
+                                                 name:kLocationUpdateNotification
+                                               object:nil];
+    
+    // Add the location update notification observer
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleExerciseStarted:)
+                                                 name:kWorkoutStartedNotification
+                                               object:nil];
+    
+    // Add the location update notification observer
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleExerciseFinished:)
+                                                 name:kWorkoutFinishedNotification
+                                               object:nil];
+}
+
+- (void) viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    // Remove the location update notification observer
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kLocationUpdateNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kWorkoutStartedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kWorkoutFinishedNotification object:nil];
 }
 
 - (void)chooseDetailView:(id)sender {
@@ -100,6 +152,49 @@
     [[HackLocationManager sharedManager] initializeRegionMonitoring];
     
     self.title = @"Monitoring iBeacons";
+}
+
+- (void)handleLocationUpdate:(NSNotification*)notification
+{
+//    // update status message displayed
+//    self.currentWorkoutName.text = notification.userInfo[@"statusMessage"];
+//    
+//    NSArray* beacons = notification.userInfo[@"beaconArray"];
+//    CLBeacon* closestBeacon = notification.userInfo[@"closestBeacon"];
+//    
+    // log message for debugging
+    //NSLog(@"%@", notification.userInfo[@"statusMessage"]);
+}
+
+#pragma mark - Exercise Notification Handler Methods
+
+- (void)handleExerciseStarted:(NSNotification*)notification
+{
+    // update status message displayed
+    NSString* currentExerciseName = notification.userInfo[@"exerciseName"];
+    self.currentWorkoutName.text = [NSString stringWithFormat:@"Currently doin %@", currentExerciseName];
+}
+
+- (void)handleExerciseFinished:(NSNotification*)notification
+{
+    self.currentWorkoutName.text = @"Not currently exercising";
+}
+
+#pragma mark - Bitmap View Methods
+
+- (FBBitmapFontView*)setupBitmapFontViewWithFrame:(CGRect)frame
+{
+    FBBitmapFontView *v = [[FBBitmapFontView alloc] initWithFrame:frame];
+    v.text = @"BITMAP";
+    v.numberOfBottomPaddingDot = 1;
+    v.numberOfTopPaddingDot    = 1;
+    v.numberOfLeftPaddingDot   = 2;
+    v.numberOfRightPaddingDot  = 2;
+    v.glowSize = 20.0;
+    v.innerGlowSize = 3.0;
+    v.edgeLength = 1.5;
+    return v;
+    [v resetSize];
 }
 
 @end

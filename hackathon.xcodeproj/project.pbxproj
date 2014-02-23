@@ -32,6 +32,15 @@
 		2FE165EB18B98CFE00CAECF2 /* ExerciseSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE165E618B98CFE00CAECF2 /* ExerciseSet.m */; };
 		2FE165EC18B98CFE00CAECF2 /* Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE165E818B98CFE00CAECF2 /* Workout.m */; };
 		2FE165F018B99FAD00CAECF2 /* WorkoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE165EF18B99FAD00CAECF2 /* WorkoutManager.m */; };
+		2FE165F618B9CB7E00CAECF2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D573F8FC1805C469001004B2 /* XCTest.framework */; };
+		2FE165F718B9CB7E00CAECF2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D573F8E31805C469001004B2 /* Foundation.framework */; };
+		2FE165F818B9CB7E00CAECF2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D573F8E71805C469001004B2 /* UIKit.framework */; };
+		2FE165FE18B9CB7E00CAECF2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FE165FC18B9CB7E00CAECF2 /* InfoPlist.strings */; };
+		2FE1660018B9CB7E00CAECF2 /* HackathonUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE165FF18B9CB7E00CAECF2 /* HackathonUnitTests.m */; };
+		2FE1660A18B9CBDB00CAECF2 /* WorkoutManagerUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1660918B9CBDB00CAECF2 /* WorkoutManagerUnitTests.m */; };
+		2FE1660D18BA31FE00CAECF2 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1660C18BA31FE00CAECF2 /* MainView.m */; };
+		2FE1661118BA508700CAECF2 /* PebbleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1661018BA508700CAECF2 /* PebbleManager.m */; };
+		2FE1661618BA587500CAECF2 /* MTIBulbView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1661518BA587500CAECF2 /* MTIBulbView.m */; };
 		D573F8E41805C469001004B2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D573F8E31805C469001004B2 /* Foundation.framework */; };
 		D573F8E61805C469001004B2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D573F8E51805C469001004B2 /* CoreGraphics.framework */; };
 		D573F8E81805C469001004B2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D573F8E71805C469001004B2 /* UIKit.framework */; };
@@ -47,7 +56,18 @@
 		D5A433401808415F00228EFC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D573F927180601B1001004B2 /* CoreLocation.framework */; };
 		D5A433421808417600228EFC /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A433411808417600228EFC /* CoreBluetooth.framework */; };
 		DB8E54E318B9965D00E866B2 /* KiwiMoveManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8E54E218B9965D00E866B2 /* KiwiMoveManager.m */; };
+		F9C9637573C3469B8DC625BB /* libPods-HackathonUnitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A96A21F93E234BE9AB2A114F /* libPods-HackathonUnitTests.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2FE1660218B9CB7E00CAECF2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D573F8D81805C469001004B2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D573F8DF1805C469001004B2;
+			remoteInfo = hackathon;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2FE165C218B9718600CAECF2 /* WorkoutSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorkoutSummaryViewController.h; path = ViewControllers/WorkoutSummary/WorkoutSummaryViewController.h; sourceTree = "<group>"; };
@@ -70,6 +90,20 @@
 		2FE165E818B98CFE00CAECF2 /* Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Workout.m; path = Models/Workout.m; sourceTree = "<group>"; };
 		2FE165EE18B99FAD00CAECF2 /* WorkoutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorkoutManager.h; path = WorkoutManager/WorkoutManager.h; sourceTree = "<group>"; };
 		2FE165EF18B99FAD00CAECF2 /* WorkoutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkoutManager.m; path = WorkoutManager/WorkoutManager.m; sourceTree = "<group>"; };
+		2FE165F518B9CB7E00CAECF2 /* HackathonUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HackathonUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FE165FB18B9CB7E00CAECF2 /* HackathonUnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HackathonUnitTests-Info.plist"; sourceTree = "<group>"; };
+		2FE165FD18B9CB7E00CAECF2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2FE165FF18B9CB7E00CAECF2 /* HackathonUnitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HackathonUnitTests.m; sourceTree = "<group>"; };
+		2FE1660118B9CB7E00CAECF2 /* HackathonUnitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HackathonUnitTests-Prefix.pch"; sourceTree = "<group>"; };
+		2FE1660918B9CBDB00CAECF2 /* WorkoutManagerUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkoutManagerUnitTests.m; path = WorkoutManager/WorkoutManagerUnitTests.m; sourceTree = "<group>"; };
+		2FE1660B18BA31FE00CAECF2 /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainView.h; path = Views/MainView/MainView.h; sourceTree = "<group>"; };
+		2FE1660C18BA31FE00CAECF2 /* MainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainView.m; path = Views/MainView/MainView.m; sourceTree = "<group>"; };
+		2FE1660F18BA508700CAECF2 /* PebbleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PebbleManager.h; path = PebbleManager/PebbleManager.h; sourceTree = "<group>"; };
+		2FE1661018BA508700CAECF2 /* PebbleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PebbleManager.m; path = PebbleManager/PebbleManager.m; sourceTree = "<group>"; };
+		2FE1661418BA587500CAECF2 /* MTIBulbView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTIBulbView.h; sourceTree = "<group>"; };
+		2FE1661518BA587500CAECF2 /* MTIBulbView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTIBulbView.m; sourceTree = "<group>"; };
+		5E3659CC8665415482218FF5 /* Pods-HackathonUnitTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackathonUnitTests.xcconfig"; path = "Pods/Pods-HackathonUnitTests.xcconfig"; sourceTree = "<group>"; };
+		A96A21F93E234BE9AB2A114F /* libPods-HackathonUnitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HackathonUnitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D51FA1226C274E14819EB9A7 /* libPods-hackathon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-hackathon.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D573F8E01805C469001004B2 /* hackathon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hackathon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D573F8E31805C469001004B2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -101,6 +135,17 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2FE165F218B9CB7E00CAECF2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FE165F618B9CB7E00CAECF2 /* XCTest.framework in Frameworks */,
+				2FE165F818B9CB7E00CAECF2 /* UIKit.framework in Frameworks */,
+				2FE165F718B9CB7E00CAECF2 /* Foundation.framework in Frameworks */,
+				F9C9637573C3469B8DC625BB /* libPods-HackathonUnitTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D573F8DD1805C469001004B2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -198,6 +243,8 @@
 		2FE165CA18B972B700CAECF2 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				2FE1660B18BA31FE00CAECF2 /* MainView.h */,
+				2FE1660C18BA31FE00CAECF2 /* MainView.m */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -227,13 +274,78 @@
 			name = WorkoutManager;
 			sourceTree = "<group>";
 		};
+		2FE165F918B9CB7E00CAECF2 /* HackathonUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				2FE1660818B9CBB700CAECF2 /* LocationManager */,
+				2FE1660718B9CB9400CAECF2 /* WorkoutManager */,
+				2FE165FF18B9CB7E00CAECF2 /* HackathonUnitTests.m */,
+				2FE165FA18B9CB7E00CAECF2 /* Supporting Files */,
+			);
+			path = HackathonUnitTests;
+			sourceTree = "<group>";
+		};
+		2FE165FA18B9CB7E00CAECF2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2FE165FB18B9CB7E00CAECF2 /* HackathonUnitTests-Info.plist */,
+				2FE165FC18B9CB7E00CAECF2 /* InfoPlist.strings */,
+				2FE1660118B9CB7E00CAECF2 /* HackathonUnitTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2FE1660718B9CB9400CAECF2 /* WorkoutManager */ = {
+			isa = PBXGroup;
+			children = (
+				2FE1660918B9CBDB00CAECF2 /* WorkoutManagerUnitTests.m */,
+			);
+			name = WorkoutManager;
+			sourceTree = "<group>";
+		};
+		2FE1660818B9CBB700CAECF2 /* LocationManager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = LocationManager;
+			sourceTree = "<group>";
+		};
+		2FE1660E18BA506B00CAECF2 /* PebbleManager */ = {
+			isa = PBXGroup;
+			children = (
+				2FE1660F18BA508700CAECF2 /* PebbleManager.h */,
+				2FE1661018BA508700CAECF2 /* PebbleManager.m */,
+			);
+			name = PebbleManager;
+			sourceTree = "<group>";
+		};
+		2FE1661218BA585100CAECF2 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				2FE1661318BA585A00CAECF2 /* BulbView */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		2FE1661318BA585A00CAECF2 /* BulbView */ = {
+			isa = PBXGroup;
+			children = (
+				2FE1661418BA587500CAECF2 /* MTIBulbView.h */,
+				2FE1661518BA587500CAECF2 /* MTIBulbView.m */,
+			);
+			name = BulbView;
+			sourceTree = "<group>";
+		};
 		D573F8D71805C469001004B2 = {
 			isa = PBXGroup;
 			children = (
+				2FE1661218BA585100CAECF2 /* Libraries */,
 				D573F8E91805C469001004B2 /* hackathon */,
+				2FE165F918B9CB7E00CAECF2 /* HackathonUnitTests */,
 				D573F8E21805C469001004B2 /* Frameworks */,
 				D573F8E11805C469001004B2 /* Products */,
 				FEF6678433DC46ABA445CA43 /* Pods-hackathon.xcconfig */,
+				5E3659CC8665415482218FF5 /* Pods-HackathonUnitTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -241,6 +353,7 @@
 			isa = PBXGroup;
 			children = (
 				D573F8E01805C469001004B2 /* hackathon.app */,
+				2FE165F518B9CB7E00CAECF2 /* HackathonUnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -255,6 +368,7 @@
 				D573F8E71805C469001004B2 /* UIKit.framework */,
 				D573F8FC1805C469001004B2 /* XCTest.framework */,
 				D51FA1226C274E14819EB9A7 /* libPods-hackathon.a */,
+				A96A21F93E234BE9AB2A114F /* libPods-HackathonUnitTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -262,9 +376,10 @@
 		D573F8E91805C469001004B2 /* hackathon */ = {
 			isa = PBXGroup;
 			children = (
-				DB8E54DD18B992EA00E866B2 /* KiwiMove */,
 				D573F9121805C4A5001004B2 /* hackathonDelegate.h */,
 				D573F9181805C4A5001004B2 /* hackathonDelegate.m */,
+				2FE1660E18BA506B00CAECF2 /* PebbleManager */,
+				DB8E54DD18B992EA00E866B2 /* KiwiMove */,
 				2FE165ED18B99F8700CAECF2 /* WorkoutManager */,
 				2FE165BE18B9712500CAECF2 /* Location Manager */,
 				2FE165D418B980E200CAECF2 /* Models */,
@@ -302,6 +417,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2FE165F418B9CB7E00CAECF2 /* HackathonUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2FE1660618B9CB7E00CAECF2 /* Build configuration list for PBXNativeTarget "HackathonUnitTests" */;
+			buildPhases = (
+				82A307736DC24F359A70998F /* Check Pods Manifest.lock */,
+				2FE165F118B9CB7E00CAECF2 /* Sources */,
+				2FE165F218B9CB7E00CAECF2 /* Frameworks */,
+				2FE165F318B9CB7E00CAECF2 /* Resources */,
+				474B796258E84D90B5868EED /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2FE1660318B9CB7E00CAECF2 /* PBXTargetDependency */,
+			);
+			name = HackathonUnitTests;
+			productName = HackathonUnitTests;
+			productReference = 2FE165F518B9CB7E00CAECF2 /* HackathonUnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D573F8DF1805C469001004B2 /* hackathon */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D573F90C1805C46A001004B2 /* Build configuration list for PBXNativeTarget "hackathon" */;
@@ -331,6 +466,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Christopher Mann";
 				TargetAttributes = {
+					2FE165F418B9CB7E00CAECF2 = {
+						TestTargetID = D573F8DF1805C469001004B2;
+					};
 					D573F8DF1805C469001004B2 = {
 						DevelopmentTeam = 3GF84GRX67;
 					};
@@ -350,11 +488,20 @@
 			targets = (
 				D573F8DF1805C469001004B2 /* hackathon */,
 				2FE165D618B981F600CAECF2 /* Mogenerator */,
+				2FE165F418B9CB7E00CAECF2 /* HackathonUnitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2FE165F318B9CB7E00CAECF2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FE165FE18B9CB7E00CAECF2 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D573F8DE1805C469001004B2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -379,6 +526,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "mogenerator -m ${SRCROOT}/iBeaconDemo/Models/Model.xcdatamodeld -O ${SRCROOT}/iBeaconDemo/Models --template-var arc=true";
+		};
+		474B796258E84D90B5868EED /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-HackathonUnitTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		82A307736DC24F359A70998F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
 		};
 		E5A0FBE4F1C4421DA3786E4E /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -413,10 +590,20 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2FE165F118B9CB7E00CAECF2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FE1660018B9CB7E00CAECF2 /* HackathonUnitTests.m in Sources */,
+				2FE1660A18B9CBDB00CAECF2 /* WorkoutManagerUnitTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D573F8DC1805C469001004B2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FE1660D18BA31FE00CAECF2 /* MainView.m in Sources */,
 				2FE165D018B972F600CAECF2 /* WorkoutSummaryView.m in Sources */,
 				2FE165EA18B98CFE00CAECF2 /* _Workout.m in Sources */,
 				D573F91E1805C4A5001004B2 /* hackathonDelegate.m in Sources */,
@@ -427,6 +614,8 @@
 				D573F8F01805C469001004B2 /* main.m in Sources */,
 				2FE165C718B971A100CAECF2 /* MachineSummaryViewController.m in Sources */,
 				D573F9221805C4A5001004B2 /* CSMLocationUpdateController.m in Sources */,
+				2FE1661618BA587500CAECF2 /* MTIBulbView.m in Sources */,
+				2FE1661118BA508700CAECF2 /* PebbleManager.m in Sources */,
 				D573F91F1805C4A5001004B2 /* CSMBeaconRegion.m in Sources */,
 				D573F9211805C4A5001004B2 /* HackLocationManager.m in Sources */,
 				2FE165F018B99FAD00CAECF2 /* WorkoutManager.m in Sources */,
@@ -440,7 +629,23 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		2FE1660318B9CB7E00CAECF2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D573F8DF1805C469001004B2 /* hackathon */;
+			targetProxy = 2FE1660218B9CB7E00CAECF2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		2FE165FC18B9CB7E00CAECF2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2FE165FD18B9CB7E00CAECF2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		D573F8EC1805C469001004B2 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -463,6 +668,50 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		2FE1660418B9CB7E00CAECF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E3659CC8665415482218FF5 /* Pods-HackathonUnitTests.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/hackathon.app/hackathon";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HackathonUnitTests/HackathonUnitTests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "HackathonUnitTests/HackathonUnitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		2FE1660518B9CB7E00CAECF2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E3659CC8665415482218FF5 /* Pods-HackathonUnitTests.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/hackathon.app/hackathon";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HackathonUnitTests/HackathonUnitTests-Prefix.pch";
+				INFOPLIST_FILE = "HackathonUnitTests/HackathonUnitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
@@ -582,6 +831,15 @@
 			buildConfigurations = (
 				2FE165D818B981F600CAECF2 /* Debug */,
 				2FE165D918B981F600CAECF2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2FE1660618B9CB7E00CAECF2 /* Build configuration list for PBXNativeTarget "HackathonUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2FE1660418B9CB7E00CAECF2 /* Debug */,
+				2FE1660518B9CB7E00CAECF2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

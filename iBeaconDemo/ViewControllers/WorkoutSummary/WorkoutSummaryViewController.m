@@ -33,7 +33,8 @@
 	_workoutSummaryView = [[WorkoutSummaryView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:_workoutSummaryView];
     
-    _workoutSummaryView.workoutNameLabel.text = @"Workout Name";
+    // Setup the clear workout stats button
+    [_workoutSummaryView.clearWorkoutStats addTarget:self action:@selector(clearWorkoutStats:) forControlEvents:UIControlEventTouchUpInside];
     [self updateWorkoutStatsUI];
 }
 
@@ -69,8 +70,15 @@
 {
     NSNumber* numberExercise = [[WorkoutManager sharedManager] numberOfExercises];
     if (numberExercise != nil) {
-        _workoutSummaryView.workoutCountLabel.text = [numberExercise stringValue];
+        _workoutSummaryView.workoutCountLabel.text = [NSString stringWithFormat:@"Machines: %@", [numberExercise stringValue]];
+        _workoutSummaryView.workoutCaloriesBurned.text = [NSString stringWithFormat:@"Calories: %@", [numberExercise stringValue]];
+        _workoutSummaryView.workoutTimeElapsed.text = [NSString stringWithFormat:@"Total Time: %@", [numberExercise stringValue]];
     }
+}
+
+- (IBAction)clearWorkoutStats:(id)sender
+{
+    [[WorkoutManager sharedManager] clearAllExerciseStats];
 }
 
 
@@ -79,11 +87,24 @@
 
 - (void)handleLocationUpdate:(NSNotification*)notification
 {
-    // update status message displayed
-    _workoutSummaryView.workoutNameLabel.text = notification.userInfo[@"status"];
-    
+//    // update status message displayed
+//    _workoutSummaryView.workoutNameLabel.text = notification.userInfo[@"statusMessage"];
+//    
     // log message for debugging
-    NSLog(@"%@", notification.userInfo[@"status"]);
+    //NSLog(@"%@", notification.userInfo[@"statusMessage"]);
+}
+
+#pragma mark - Exercise Notification Handler Methods
+
+- (void)handleExerciseStarted:(NSNotification*)notification
+{
+    // update status message displayed
+    [self updateWorkoutStatsUI];
+}
+
+- (void)handleExerciseFinished:(NSNotification*)notification
+{
+    [self updateWorkoutStatsUI];
 }
 
 @end

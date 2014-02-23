@@ -7,12 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FBDigitalFont/FBBitmapFontView.h>
+
 
 @interface MachineSummaryView : UIView
 
-@property (strong, nonatomic) UILabel* machineNameLabel;
-@property (strong, nonatomic) UILabel* startTimeLabel;
-@property (strong, nonatomic) UILabel* endTimeLabel;
-@property (strong, nonatomic) UILabel* caloriesBurnedLabel;
+@property (strong, nonatomic) FBBitmapFontView* machineNameTitleLabel;
+@property (strong, nonatomic) FBBitmapFontView* machineNameLabel;
+
+@property (strong, nonatomic) FBBitmapFontView* startTimeLabel;
+@property (strong, nonatomic) FBBitmapFontView* endTimeLabel;
+
+@property (strong, nonatomic) FBBitmapFontView* elapsedTimeLabel;
+@property (strong, nonatomic) FBBitmapFontView* elapsedTimeCounterLabel;
+
+@property (strong, nonatomic) FBBitmapFontView* caloriesBurnedLabel;
+@property (strong, nonatomic) FBBitmapFontView* caloriesBurnedCounterLabel;
+
+- (FBBitmapFontView*)setupBitmapFontViewWithFrame:(CGRect)frame;
+- (void) resetSizes;
 
 @end

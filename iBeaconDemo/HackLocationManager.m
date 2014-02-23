@@ -88,7 +88,9 @@ static HackLocationManager *_sharedInstance = nil;
                                                         object:Nil
                                                       userInfo:@{@"statusMessage" : status,
                                                                  @"eventType" : [NSNumber numberWithInt:eventType],
-                                                                 @"beaconInfo" : info}];
+                                                                 @"beaconArray" : [info objectForKey:@"beaconArray"],
+                                                                 @"closestBeacon" : [info objectForKey:@"closestBeacon"]
+                                                                 }];
 }
 
 - (void)fireUpdateNotificationForStatus:(NSString*)status withInfo:(NSDictionary*)info
@@ -97,7 +99,9 @@ static HackLocationManager *_sharedInstance = nil;
     [[NSNotificationCenter defaultCenter] postNotificationName:kLocationUpdateNotification
                                                         object:Nil
                                                       userInfo:@{@"statusMessage" : status,
-                                                                 @"beaconInfo" : info}];
+                                                                 @"beaconArray" : [info objectForKey:@"beaconArray"],
+                                                                 @"closestBeacon" : [info objectForKey:@"closestBeacon"]
+                                                                 }];
 }
 
 - (void)fireUpdateNotificationForStatus:(NSString*)status
@@ -105,7 +109,8 @@ static HackLocationManager *_sharedInstance = nil;
     // fire notification to update displayed status
     [[NSNotificationCenter defaultCenter] postNotificationName:kLocationUpdateNotification
                                                         object:Nil
-                                                      userInfo:@{@"status" : status}];
+                                                      userInfo:@{@"statusMessage" : status
+                                                                 }];
 }
 
 
@@ -250,12 +255,11 @@ static HackLocationManager *_sharedInstance = nil;
         CLBeacon *closestBeacon = beacons[0];
         
         NSString* notification = [NSString stringWithFormat:@"You are in the immediate vicinity of the beacon: Major: %@ Minor: %@ rssi: %i",[closestBeacon.major stringValue], [closestBeacon.minor stringValue], closestBeacon.rssi];
-        
         NSDictionary* beaconInfo = @{@"closestBeacon":closestBeacon, @"beaconArray":beacons};
         
         if (closestBeacon.proximity == CLProximityImmediate) {
             // Update which exercise we are recording based on the closest
-            [[WorkoutManager sharedManager] recordExerciseSetForBeacon:closestBeacon];
+            [[WorkoutManager sharedManager] startExerciseSetForBeacon:closestBeacon];
             [self fireUpdateNotificationForStatus:notification withInfo:beaconInfo];
             
         } else if (closestBeacon.proximity == CLProximityNear) {

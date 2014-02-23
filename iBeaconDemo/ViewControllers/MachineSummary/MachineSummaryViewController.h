@@ -13,5 +13,9 @@
 @interface MachineSummaryViewController : UIViewController
 
 @property (strong, nonatomic) MachineSummaryView* machineSummaryView;
+@property (strong, nonatomic) NSTimer* updateUITimer;
+
+- (void) updateUI;
+- (void) updateUIWithName:(NSString*)currentExerciseName withStartTime:(NSDate*)startTime;
 
 @end
