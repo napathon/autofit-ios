@@ -7,6 +7,7 @@
 
 #import "KiwiMoveManager.h"
 #import <SocketIO.h>
+#import <SocketIOPacket.h>
 
 @interface KiwiMoveManager()
 
@@ -29,18 +30,18 @@ static KiwiMoveManager *_sharedInstance = nil;
 - (BOOL)connect {
     self.socketIO = [[SocketIO alloc] initWithDelegate:_sharedInstance];
     [self.socketIO connectToHost:@"build.kiwiwearables.com" onPort:8080];
-     
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setObject:@"30" forKey:@"device_id"];
-    [dict setObject:@"123" forKey:@"password"];
-    
-    [self.socketIO sendEvent:@"listen" withData:dict];
     
     return true;
 }
 
 - (void) socketIODidConnect:(SocketIO *)socket {
     NSLog(@"socket connected");
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setObject:@"30" forKey:@"device_id"];
+    [dict setObject:@"123" forKey:@"password"];
+    
+    [self.socketIO sendEvent:@"listen" withData:dict];
 }
 
 - (void) socketIODidDisconnect:(SocketIO *)socket disconnectedWithError:(NSError *)error {
@@ -56,6 +57,6 @@ static KiwiMoveManager *_sharedInstance = nil;
 }
 
 - (void) socketIO:(SocketIO *)socket didReceiveEvent:(SocketIOPacket *)packet {
-    NSLog(@"event received");
+    NSLog(@"didReceiveEvent() >>> data: %@", packet.data);
 }
 @end
