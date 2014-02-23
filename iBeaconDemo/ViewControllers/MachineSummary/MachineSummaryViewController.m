@@ -61,6 +61,11 @@
                                                  name:kWorkoutFinishedNotification
                                                object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleRepCompleted:)
+                                                 name:kRepCompletedNotification
+                                               object:nil];
+    
     _updateUITimer = [NSTimer scheduledTimerWithTimeInterval:1.0
                                      target:self
                                    selector:@selector(updateUI)
@@ -126,6 +131,12 @@
     // update status message displayed
     NSString* currentExerciseName = notification.userInfo[@"exerciseName"];
     _machineSummaryView.machineNameLabel.text = [NSString stringWithFormat:@"Currently doing %@", currentExerciseName];
+}
+
+- (void)handleRepCompleted:(NSNotification*)notification
+{
+    // update status message displayed
+    NSNumber* currentReps = notification.userInfo[@"repNum"];
 }
 
 - (void)handleExerciseFinished:(NSNotification*)notification

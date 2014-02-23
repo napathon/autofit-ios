@@ -14,5 +14,6 @@
 - (BOOL)connect;
 - (void)addData:(float)a;
 - (BOOL)repDetectedWithData:(float)a;
+- (void)processDataAndNotify:(NSDictionary*)readout;
 
 @end

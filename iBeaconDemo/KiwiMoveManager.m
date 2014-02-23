@@ -71,11 +71,24 @@ static int _valueBuffer = 120;
 
 - (BOOL) repDetectedWithData:(float)a {
     BOOL detected = false;
-    if ((_currentElementIndex >= 0) && ([(NSNumber *)[_accelerationLog objectAtIndex:_currentElementIndex] floatValue] - a) > 0.5) {
+    if ((_currentElementIndex >= 0) && abs(abs([(NSNumber *)[_accelerationLog objectAtIndex:_currentElementIndex] floatValue]) - abs(a)) > 0.5) {
         detected = true;
     }
     [self addData:a];
     return detected;
+}
+
+- (void)processDataAndNotify:(NSDictionary*) readout {
+    float ax = [[readout objectForKey:@"ax"] floatValue];
+    float ay = [[readout objectForKey:@"ay"] floatValue];
+    float az = [[readout objectForKey:@"az"] floatValue];
+    float a = sqrtf(ax*ax + ay*ay + az*az);
+    if ([self repDetectedWithData:a]) {
+        self.reps += 1;
+        [[NSNotificationCenter defaultCenter] postNotificationName:kRepCompletedNotification
+                                                            object:Nil
+                                                          userInfo:@{@"repNum" : [NSNumber numberWithFloat:self.reps]}];
+    }
 }
 
 - (void) socketIO:(SocketIO *)socket didReceiveEvent:(SocketIOPacket *)packet {
@@ -104,14 +117,7 @@ static int _valueBuffer = 120;
                 NSLog(@"Error parsing JSON: %@", jsonParsingError);
             }
             else {
-                float ax = [[readout objectForKey:@"ax"] floatValue];
-                float ay = [[readout objectForKey:@"ay"] floatValue];
-                float az = [[readout objectForKey:@"az"] floatValue];
-                float a = sqrtf(ax*ax + ay*ay + az*az);
-                if ([self repDetectedWithData:a]) {
-                    self.reps += 1;
-                    NSLog(@"Rep %d", self.reps);
-                }
+                [self processDataAndNotify: readout];
             }
         }
     }
