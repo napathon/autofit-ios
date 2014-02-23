@@ -19,13 +19,13 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        _workoutNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 20.0, 300.0, 50.0)];
+        _workoutNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 50.0, 250.0, 50.0)];
         [self addSubview:_workoutNameLabel];
         
-        _workoutCaloriesBurned = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 70.0, 300.0, 50.0)];
+        _workoutCaloriesBurned = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 100.0, 250.0, 50.0)];
         [self addSubview:_workoutCaloriesBurned];
         
-        _workoutTimeElapsed = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 130.0, 300.0, 50.0)];
+        _workoutTimeElapsed = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 150.0, 250.0, 50.0)];
         [self addSubview:_workoutTimeElapsed];
         
     }

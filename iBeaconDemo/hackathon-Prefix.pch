@@ -19,4 +19,6 @@
 
     #import <MagicalRecord/MagicalRecord.h>
     #import <MagicalRecord/CoreData+MagicalRecord.h>
+
+    #import <CoreLocation/CoreLocation.h>
 #endif

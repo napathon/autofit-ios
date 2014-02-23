@@ -7,7 +7,6 @@
 //
 
 #import "WorkoutSummaryViewController.h"
-#import "Workout.h"
 
 @interface WorkoutSummaryViewController ()
 
@@ -31,7 +30,7 @@
     [super viewDidLoad];
     self.title = @"Workout Summary";
 	_workoutSummaryView = [[WorkoutSummaryView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
-    self.view = _workoutSummaryView;
+    [self.view addSubview:_workoutSummaryView];
     
     _workoutSummaryView.workoutNameLabel.text = @"Workout Name";
 }

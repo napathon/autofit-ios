@@ -19,20 +19,28 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _machineNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 20.0, 300.0, 50.0)];
+        _machineNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 50.0, 250.0, 50.0)];
         [self addSubview:_machineNameLabel];
         
-        _startTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 70.0, 300.0, 50.0)];
+        _startTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 100.0, 250.0, 50.0)];
         [self addSubview:_startTimeLabel];
         
-        _endTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 130.0, 300.0, 50.0)];
+        _endTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 150.0, 250.0, 50.0)];
         [self addSubview:_endTimeLabel];
         
-        _caloriesBurnedLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 180.0, 300.0, 50.0)];
+        _caloriesBurnedLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 250.0, 300.0, 50.0)];
         [self addSubview:_caloriesBurnedLabel];
     }
     return self;
 }
+
+//- (void) layoutSubviews
+//{
+//    _machineNameLabel.frame = CGRectMake(20.0, 20.0, 300.0, 50.0);
+//    _startTimeLabel.frame = CGRectMake(20.0, 70.0, 300.0, 50.0);
+//    _endTimeLabel.frame = CGRectMake(20.0, 130.0, 300.0, 50.0);
+//    _caloriesBurnedLabel.frame = CGRectMake(20.0, 180.0, 300.0, 50.0);
+//}
 
 /*
 // Only override drawRect: if you perform custom drawing.
