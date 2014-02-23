@@ -1,5 +1,7 @@
 #import "_ExerciseSet.h"
 
 @interface ExerciseSet : _ExerciseSet {}
-// Custom logic goes here.
+
++ (ExerciseSet*) exerciseSetWithBeacon:(CLBeacon*)beacon;
+
 @end

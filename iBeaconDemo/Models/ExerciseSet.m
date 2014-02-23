@@ -1,4 +1,5 @@
 #import "ExerciseSet.h"
+#import "WorkoutManager.h"
 
 
 @interface ExerciseSet ()
@@ -10,6 +11,13 @@
 
 @implementation ExerciseSet
 
-// Custom logic goes here.
++ (ExerciseSet*) exerciseSetWithBeacon:(CLBeacon*)beacon
+{
+    ExerciseSet* exerciseSet = [ExerciseSet MR_createEntity];
+    exerciseSet.exerciseName = [[WorkoutManager sharedManager] exerciseNameForBeacon:beacon];
+    exerciseSet.startExercise = [NSDate date];
+    
+    return exerciseSet;
+}
 
 @end

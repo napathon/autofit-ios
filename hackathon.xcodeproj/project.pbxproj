@@ -31,6 +31,7 @@
 		2FE165EA18B98CFE00CAECF2 /* _Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE165E418B98CFE00CAECF2 /* _Workout.m */; };
 		2FE165EB18B98CFE00CAECF2 /* ExerciseSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE165E618B98CFE00CAECF2 /* ExerciseSet.m */; };
 		2FE165EC18B98CFE00CAECF2 /* Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE165E818B98CFE00CAECF2 /* Workout.m */; };
+		2FE165F018B99FAD00CAECF2 /* WorkoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE165EF18B99FAD00CAECF2 /* WorkoutManager.m */; };
 		D573F8E41805C469001004B2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D573F8E31805C469001004B2 /* Foundation.framework */; };
 		D573F8E61805C469001004B2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D573F8E51805C469001004B2 /* CoreGraphics.framework */; };
 		D573F8E81805C469001004B2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D573F8E71805C469001004B2 /* UIKit.framework */; };
@@ -67,6 +68,8 @@
 		2FE165E618B98CFE00CAECF2 /* ExerciseSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExerciseSet.m; path = Models/ExerciseSet.m; sourceTree = "<group>"; };
 		2FE165E718B98CFE00CAECF2 /* Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Workout.h; path = Models/Workout.h; sourceTree = "<group>"; };
 		2FE165E818B98CFE00CAECF2 /* Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Workout.m; path = Models/Workout.m; sourceTree = "<group>"; };
+		2FE165EE18B99FAD00CAECF2 /* WorkoutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorkoutManager.h; path = WorkoutManager/WorkoutManager.h; sourceTree = "<group>"; };
+		2FE165EF18B99FAD00CAECF2 /* WorkoutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkoutManager.m; path = WorkoutManager/WorkoutManager.m; sourceTree = "<group>"; };
 		D51FA1226C274E14819EB9A7 /* libPods-hackathon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-hackathon.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D573F8E01805C469001004B2 /* hackathon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hackathon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D573F8E31805C469001004B2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -215,6 +218,15 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		2FE165ED18B99F8700CAECF2 /* WorkoutManager */ = {
+			isa = PBXGroup;
+			children = (
+				2FE165EE18B99FAD00CAECF2 /* WorkoutManager.h */,
+				2FE165EF18B99FAD00CAECF2 /* WorkoutManager.m */,
+			);
+			name = WorkoutManager;
+			sourceTree = "<group>";
+		};
 		D573F8D71805C469001004B2 = {
 			isa = PBXGroup;
 			children = (
@@ -253,6 +265,7 @@
 				DB8E54DD18B992EA00E866B2 /* KiwiMove */,
 				D573F9121805C4A5001004B2 /* hackathonDelegate.h */,
 				D573F9181805C4A5001004B2 /* hackathonDelegate.m */,
+				2FE165ED18B99F8700CAECF2 /* WorkoutManager */,
 				2FE165BE18B9712500CAECF2 /* Location Manager */,
 				2FE165D418B980E200CAECF2 /* Models */,
 				2FE165BC18B9711000CAECF2 /* Views */,
@@ -416,6 +429,7 @@
 				D573F9221805C4A5001004B2 /* CSMLocationUpdateController.m in Sources */,
 				D573F91F1805C4A5001004B2 /* CSMBeaconRegion.m in Sources */,
 				D573F9211805C4A5001004B2 /* HackLocationManager.m in Sources */,
+				2FE165F018B99FAD00CAECF2 /* WorkoutManager.m in Sources */,
 				D573F9231805C4A5001004B2 /* HackathonRootViewController.m in Sources */,
 				DB8E54E318B9965D00E866B2 /* KiwiMoveManager.m in Sources */,
 				2FE165D318B980DC00CAECF2 /* Model.xcdatamodeld in Sources */,

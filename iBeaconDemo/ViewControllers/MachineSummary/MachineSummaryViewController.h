@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WorkoutSummaryView.h"
 #import "MachineSummaryView.h"
+#import "ExerciseSet.h"
 
 @interface MachineSummaryViewController : UIViewController
 

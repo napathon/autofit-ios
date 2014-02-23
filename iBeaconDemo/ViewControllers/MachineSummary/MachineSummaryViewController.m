@@ -73,7 +73,7 @@
     
     NSDictionary* beaconInfo = notification.userInfo[@"beaconInfo"];
     NSArray* beacons = [beaconInfo objectForKey:@"beacons"];
-    CLBeacon* beacon = [beaconInfo objectForKey:@"closestBeacon"];
+    CLBeacon* closestBeacon = [beaconInfo objectForKey:@"closestBeacon"];
     
     // log message for debugging
     NSLog(@"%@", notification.userInfo[@"status"]);

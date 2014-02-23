@@ -11,6 +11,7 @@
 #import "hackathonDelegate.h"
 #import "CSMBeaconRegion.h"
 #import <CoreBluetooth/CoreBluetooth.h>
+#import "WorkoutManager.h"
 
 @interface HackLocationManager () <CBPeripheralManagerDelegate>
 
@@ -80,12 +81,22 @@ static HackLocationManager *_sharedInstance = nil;
 
 #pragma mark - Notification Center Methods
 
+- (void)fireUpdateNotificationForStatus:(NSString*)status withType:(BeaconRangeEvent)eventType withInfo:(NSDictionary*)info
+{
+    // fire notification to update displayed status
+    [[NSNotificationCenter defaultCenter] postNotificationName:kLocationUpdateNotification
+                                                        object:Nil
+                                                      userInfo:@{@"statusMessage" : status,
+                                                                 @"eventType" : [NSNumber numberWithInt:eventType],
+                                                                 @"beaconInfo" : info}];
+}
+
 - (void)fireUpdateNotificationForStatus:(NSString*)status withInfo:(NSDictionary*)info
 {
     // fire notification to update displayed status
     [[NSNotificationCenter defaultCenter] postNotificationName:kLocationUpdateNotification
                                                         object:Nil
-                                                      userInfo:@{@"status" : status,
+                                                      userInfo:@{@"statusMessage" : status,
                                                                  @"beaconInfo" : info}];
 }
 
@@ -211,7 +222,10 @@ static HackLocationManager *_sharedInstance = nil;
     }
 }
 
-- (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
+- (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region
+{
+    // Finish recording our exercise information
+    [[WorkoutManager sharedManager] finishRecordingExerciseSet];
     
     // optionally notify user they have left the region
     if (!self.didShowExitNotifier) {
@@ -240,20 +254,16 @@ static HackLocationManager *_sharedInstance = nil;
         NSDictionary* beaconInfo = @{@"closestBeacon":closestBeacon, @"beaconArray":beacons};
         
         if (closestBeacon.proximity == CLProximityImmediate) {
-            /**
-             Provide proximity based information to user.  You may choose to do this repeatedly
-             or only once depending on the use case.  Optionally use major, minor values here to provide beacon-specific content
-             */
+            // Update which exercise we are recording based on the closest
+            [[WorkoutManager sharedManager] updateExerciseSetForBeacon:closestBeacon];
             [self fireUpdateNotificationForStatus:notification withInfo:beaconInfo];
             
         } else if (closestBeacon.proximity == CLProximityNear) {
-            // detect other nearby beacons
-            // optionally hide previously displayed proximity based information
+            // We are close to a beacon but not close enough to start recording
             [self fireUpdateNotificationForStatus:notification withInfo:beaconInfo];
         }
     } else {
-        // no beacons in range - signal may have been lost
-        // optionally hide previously displayed proximity based information
+        [[WorkoutManager sharedManager] finishRecordingExerciseSet];
         [self fireUpdateNotificationForStatus:@"There are currently no Beacons within range."];
     }
 }
@@ -266,6 +276,9 @@ static HackLocationManager *_sharedInstance = nil;
     // assume notifications failed, reset indicators
     self.didShowEntranceNotifier = NO;
     self.didShowExitNotifier = NO;
+    
+    // If we were recording, stop and exit
+    [[WorkoutManager sharedManager] finishRecordingExerciseSet];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region {
