@@ -7,14 +7,12 @@
 //
 
 #import "CSMLocationUpdateController.h"
-#import "CSMLocationManager.h"
+#import "HackLocationManager.h"
 #import "CSMBeaconRegion.h"
 #import <QuartzCore/QuartzCore.h>
 
 #define kDefaultPadding 25
 #define kVerticalPadding 15
-
-#define kLocationUpdateNotification @"updateNotification"
 
 #define kLabelText [hackathonDelegate appDelegate].applicationMode == CSMApplicationModePeripheral ? @"iBeacon Status:" : @"Region Monitoring Status:";
 
@@ -120,12 +118,12 @@
     if ([hackathonDelegate appDelegate].applicationMode == CSMApplicationModePeripheral) {
         
         // stop advertising Beacon
-        [[CSMLocationManager sharedManager] stopAdvertisingBeacon];
+        [[HackLocationManager sharedManager] stopAdvertisingBeacon];
         
     } else {
         
         // stop region monitoring
-        [[CSMLocationManager sharedManager] stopMonitoringForRegion:[CSMBeaconRegion targetRegion]];
+        [[HackLocationManager sharedManager] stopMonitoringForRegion:[CSMBeaconRegion targetRegion]];
     }
     
     // remove notifications observer
@@ -137,14 +135,14 @@
 
 - (void)enableRegionMonitoringMode {
     
-    [[CSMLocationManager sharedManager] initializeRegionMonitoring];
+    [[HackLocationManager sharedManager] initializeRegionMonitoring];
     
     self.title = @"Monitoring iBeacons";
 }
 
 - (void)enablePeripheralMode {
     
-    [[CSMLocationManager sharedManager] initializePeripheralManager];
+    [[HackLocationManager sharedManager] initializePeripheralManager];
     
     self.title = @"Broadcasting iBeacon";
 }

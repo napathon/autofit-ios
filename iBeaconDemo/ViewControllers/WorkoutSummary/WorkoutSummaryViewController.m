@@ -7,6 +7,7 @@
 //
 
 #import "WorkoutSummaryViewController.h"
+#import "Workout.h"
 
 @interface WorkoutSummaryViewController ()
 
@@ -20,7 +21,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
+
     }
     return self;
 }
@@ -29,15 +30,48 @@
 {
     [super viewDidLoad];
     self.title = @"Workout Summary";
-	_workoutSummaryView = [WorkoutSummaryView new];
+	_workoutSummaryView = [[WorkoutSummaryView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
     self.view = _workoutSummaryView;
     
     _workoutSummaryView.workoutNameLabel.text = @"Workout Name";
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    // Add the location update notification observer
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleLocationUpdate:)
+                                                 name:kLocationUpdateNotification
+                                               object:nil];
+}
+
+- (void) viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    // Remove the location update notification observer
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kLocationUpdateNotification object:nil];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+#pragma mark - Location Update Notification Methods
+
+
+- (void)handleLocationUpdate:(NSNotification*)notification
+{
+    // update status message displayed
+    _workoutSummaryView.workoutNameLabel.text = notification.userInfo[@"status"];
+    
+    // log message for debugging
+    NSLog(@"%@", notification.userInfo[@"status"]);
 }
 
 @end
