@@ -20,7 +20,7 @@ static KiwiMoveManager *_sharedInstance = nil;
 static NSMutableArray *_accelerationLog;
 static int _currentElementIndex;
 static int _valueBuffer = 120;
-static float _detectionTreshold = 1.0f;
+static float _detectionTreshold = 0.7f;
 
 @implementation KiwiMoveManager
 
@@ -28,6 +28,16 @@ static float _detectionTreshold = 1.0f;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedInstance = [[KiwiMoveManager alloc] init];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(handleExerciseStarted:)
+                                                     name:kWorkoutStartedNotification
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(handleExerciseFinished:)
+                                                     name:kWorkoutFinishedNotification
+                                                   object:nil];
     });
     return _sharedInstance;
 }
@@ -44,6 +54,14 @@ static float _detectionTreshold = 1.0f;
 
 - (void)disconnect {
     [self.socketIO disconnect];
+}
+
+- (void)handleExerciseStarted:(NSNotification*)notification {
+    [self connect];
+}
+
+- (void)handleExerciseFinished:(NSNotification*)notification {
+    [self disconnect];
 }
 
 - (void) socketIODidConnect:(SocketIO *)socket {
