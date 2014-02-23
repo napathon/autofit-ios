@@ -2,8 +2,8 @@
 //  CSMLocationManager.h
 //  iBeacons_Demo
 //
-//  Created by Christopher Mann on 9/5/13.
-//  Copyright (c) 2013 Christopher Mann. All rights reserved.
+//  Created by napathon on 9/5/13.
+//  Copyright (c) 2013 napathon. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -21,5 +21,8 @@
 - (void)stopMonitoringForRegion:(CLBeaconRegion*)region;
 
 - (void)stopAdvertisingBeacon;
+
+- (void)fireUpdateNotificationForStatus:(NSString*)status;
+- (void)fireUpdateNotificationForStatus:(NSString*)status withInfo:(NSDictionary*)info;
 
 @end
