@@ -2,12 +2,16 @@
 //  CSMHomeViewController.m
 //  iBeacons_Demo
 //
-//  Created by Christopher Mann on 9/5/13.
-//  Copyright (c) 2013 Christopher Mann. All rights reserved.
+//  Created by napathon on 9/5/13.
+//  Copyright (c) 2013 napathon. All rights reserved.
 //
 
 #import "HackathonHomeViewController.h"
 #import "CSMLocationUpdateController.h"
+
+#import "MachineSummaryViewController.h"
+#import "WorkoutSummaryViewController.h"
+
 #import "hackathonDelegate.h"
 
 #import "CSMLocationManager.h"
@@ -77,20 +81,14 @@
 }
 
 - (void)chooseDetailView:(id)sender {
-    
-    CSMLocationUpdateController *monitoringController;
     if (self.segmentedControl.selectedSegmentIndex == 0) {
-        // initiate iBeacon broadcasting mode
-        monitoringController = [[CSMLocationUpdateController alloc] initWithLocationMode:CSMApplicationModePeripheral];
-        
+        MachineSummaryViewController* machineSummaryViewController = [[MachineSummaryViewController alloc] init];
+        [self.navigationController pushViewController:machineSummaryViewController animated:YES];
     } else {
-        // initate peripheral iBeacon monitoring mode
-        monitoringController = [[CSMLocationUpdateController alloc] initWithLocationMode:CSMApplicationModeRegionMonitoring];
+        WorkoutSummaryViewController* workoutSummaryViewController = [[WorkoutSummaryViewController alloc] init];
+        [self.navigationController pushViewController:workoutSummaryViewController animated:YES];
+        
     }
-    
-    // present update controller
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:monitoringController];
-    [self presentViewController:navController animated:YES completion:NULL];
 }
 
 

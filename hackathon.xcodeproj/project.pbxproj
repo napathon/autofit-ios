@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2FE165C418B9718600CAECF2 /* WorkoutSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE165C318B9718600CAECF2 /* WorkoutSummaryViewController.m */; };
 		2FE165C718B971A100CAECF2 /* MachineSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE165C618B971A100CAECF2 /* MachineSummaryViewController.m */; };
+		2FE165CD18B972E100CAECF2 /* MachineSummaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE165CC18B972E100CAECF2 /* MachineSummaryView.m */; };
+		2FE165D018B972F600CAECF2 /* WorkoutSummaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE165CF18B972F600CAECF2 /* WorkoutSummaryView.m */; };
 		D573F8E41805C469001004B2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D573F8E31805C469001004B2 /* Foundation.framework */; };
 		D573F8E61805C469001004B2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D573F8E51805C469001004B2 /* CoreGraphics.framework */; };
 		D573F8E81805C469001004B2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D573F8E71805C469001004B2 /* UIKit.framework */; };
@@ -30,6 +32,10 @@
 		2FE165C318B9718600CAECF2 /* WorkoutSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkoutSummaryViewController.m; path = ViewControllers/WorkoutSummary/WorkoutSummaryViewController.m; sourceTree = "<group>"; };
 		2FE165C518B971A100CAECF2 /* MachineSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MachineSummaryViewController.h; path = ViewControllers/MachineSummary/MachineSummaryViewController.h; sourceTree = "<group>"; };
 		2FE165C618B971A100CAECF2 /* MachineSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MachineSummaryViewController.m; path = ViewControllers/MachineSummary/MachineSummaryViewController.m; sourceTree = "<group>"; };
+		2FE165CB18B972E100CAECF2 /* MachineSummaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MachineSummaryView.h; path = Views/MachineSummary/MachineSummaryView.h; sourceTree = "<group>"; };
+		2FE165CC18B972E100CAECF2 /* MachineSummaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MachineSummaryView.m; path = Views/MachineSummary/MachineSummaryView.m; sourceTree = "<group>"; };
+		2FE165CE18B972F600CAECF2 /* WorkoutSummaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorkoutSummaryView.h; path = Views/WorkoutSummary/WorkoutSummaryView.h; sourceTree = "<group>"; };
+		2FE165CF18B972F600CAECF2 /* WorkoutSummaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkoutSummaryView.m; path = Views/WorkoutSummary/WorkoutSummaryView.m; sourceTree = "<group>"; };
 		D573F8E01805C469001004B2 /* hackathon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hackathon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D573F8E31805C469001004B2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D573F8E51805C469001004B2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -75,6 +81,9 @@
 		2FE165BC18B9711000CAECF2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2FE165CA18B972B700CAECF2 /* Main */,
+				2FE165C918B972B000CAECF2 /* WorkoutSummary */,
+				2FE165C818B972AA00CAECF2 /* MachineSummary */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -129,6 +138,31 @@
 			name = MachineSummary;
 			sourceTree = "<group>";
 		};
+		2FE165C818B972AA00CAECF2 /* MachineSummary */ = {
+			isa = PBXGroup;
+			children = (
+				2FE165CB18B972E100CAECF2 /* MachineSummaryView.h */,
+				2FE165CC18B972E100CAECF2 /* MachineSummaryView.m */,
+			);
+			name = MachineSummary;
+			sourceTree = "<group>";
+		};
+		2FE165C918B972B000CAECF2 /* WorkoutSummary */ = {
+			isa = PBXGroup;
+			children = (
+				2FE165CE18B972F600CAECF2 /* WorkoutSummaryView.h */,
+				2FE165CF18B972F600CAECF2 /* WorkoutSummaryView.m */,
+			);
+			name = WorkoutSummary;
+			sourceTree = "<group>";
+		};
+		2FE165CA18B972B700CAECF2 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
 		D573F8D71805C469001004B2 = {
 			isa = PBXGroup;
 			children = (
@@ -165,8 +199,8 @@
 				D573F9121805C4A5001004B2 /* hackathonDelegate.h */,
 				D573F9181805C4A5001004B2 /* hackathonDelegate.m */,
 				2FE165BE18B9712500CAECF2 /* Location Manager */,
-				2FE165BD18B9711600CAECF2 /* Controllers */,
 				2FE165BC18B9711000CAECF2 /* Views */,
+				2FE165BD18B9711600CAECF2 /* Controllers */,
 				D573F9161805C4A5001004B2 /* CSMLocationUpdateController.h */,
 				D573F91C1805C4A5001004B2 /* CSMLocationUpdateController.m */,
 				D573F8F51805C469001004B2 /* Images.xcassets */,
@@ -256,9 +290,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FE165D018B972F600CAECF2 /* WorkoutSummaryView.m in Sources */,
 				D573F91E1805C4A5001004B2 /* hackathonDelegate.m in Sources */,
 				2FE165C418B9718600CAECF2 /* WorkoutSummaryViewController.m in Sources */,
 				D573F9201805C4A5001004B2 /* HackathonHomeViewController.m in Sources */,
+				2FE165CD18B972E100CAECF2 /* MachineSummaryView.m in Sources */,
 				D573F8F01805C469001004B2 /* main.m in Sources */,
 				2FE165C718B971A100CAECF2 /* MachineSummaryViewController.m in Sources */,
 				D573F9221805C4A5001004B2 /* CSMLocationUpdateController.m in Sources */,
