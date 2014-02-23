@@ -7,6 +7,7 @@
 //
 
 #import "hackathonDelegate.h"
+#import "HackLocationManager.h"
 
 #define kMyStoreNumber 1
 #define kWeeklySpecialItemNumber 1
@@ -45,6 +46,9 @@
     
     // Always set to region monitoring
     self.applicationMode = CSMApplicationModeRegionMonitoring;
+    
+    // Start iBeacon Ranging
+    [[HackLocationManager sharedManager] initializeRegionMonitoring];
     
     // Set up Core Data Stack
     [MagicalRecord setupAutoMigratingCoreDataStack];

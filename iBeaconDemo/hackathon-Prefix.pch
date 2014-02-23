@@ -11,6 +11,9 @@
 #endif
 
 #ifdef __OBJC__
+
+#define kLocationUpdateNotification @"K_LOCATION_NOTIFICATION"
+
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 

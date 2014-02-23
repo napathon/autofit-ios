@@ -14,7 +14,7 @@
 
 #import "hackathonDelegate.h"
 
-#import "CSMLocationManager.h"
+#import "HackLocationManager.h"
 
 #define kHorizontalPadding 20
 #define kVerticalPadding 10
@@ -97,7 +97,7 @@
 
 - (void)enableRegionMonitoringMode {
     
-    [[CSMLocationManager sharedManager] initializeRegionMonitoring];
+    [[HackLocationManager sharedManager] initializeRegionMonitoring];
     
     self.title = @"Monitoring iBeacons";
 }
