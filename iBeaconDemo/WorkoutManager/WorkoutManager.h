@@ -35,6 +35,8 @@
 #pragma mark - Workout Statistics Methods
 
 - (NSNumber*) numberOfExercises;
+- (NSNumber*) totalCaloriesBurned;
+- (NSNumber*) totalTimeElapsed;
 - (void) clearAllExerciseStats;
 
 #pragma mark - NSNotification Methods

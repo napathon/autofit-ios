@@ -12,7 +12,6 @@
 @interface KiwiMoveManager()
 
 @property(nonatomic, strong) SocketIO *socketIO;
-@property(nonatomic) int reps;
 
 @end
 
@@ -20,14 +19,24 @@ static KiwiMoveManager *_sharedInstance = nil;
 static NSMutableArray *_accelerationLog;
 static int _currentElementIndex;
 static int _valueBuffer = 120;
-static float _detectionTreshold = 1.0f;
+static float _detectionTreshold = 0.7f;
 
 @implementation KiwiMoveManager
+
+@synthesize reps = _reps;
 
 + (instancetype)sharedManager {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedInstance = [[KiwiMoveManager alloc] init];
+    });
+    return _sharedInstance;
+}
+
+- (instancetype) init
+{
+    self = [super init];
+    if (self) {
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(handleExerciseStarted:)
@@ -38,8 +47,8 @@ static float _detectionTreshold = 1.0f;
                                                  selector:@selector(handleExerciseFinished:)
                                                      name:kWorkoutFinishedNotification
                                                    object:nil];
-    });
-    return _sharedInstance;
+    }
+    return self;
 }
 
 - (BOOL)connect {
@@ -57,11 +66,12 @@ static float _detectionTreshold = 1.0f;
 }
 
 - (void)handleExerciseStarted:(NSNotification*)notification {
-    [self connect];
+    //[self connect];
+    self.reps = 0;
 }
 
 - (void)handleExerciseFinished:(NSNotification*)notification {
-    [self disconnect];
+    //[self disconnect];
 }
 
 - (void) socketIODidConnect:(SocketIO *)socket {

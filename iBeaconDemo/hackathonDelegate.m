@@ -30,7 +30,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.rootViewController = [[HackathonRootViewController alloc] init];
-    
+ 
     // define navbar appearance
     [[UINavigationBar appearance] setBarTintColor:kAppTintColor];
     [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
@@ -51,6 +51,7 @@
     // Start iBeacon Ranging
     [[HackLocationManager sharedManager] initializeRegionMonitoring];
     [[KiwiMoveManager sharedManager] connect];
+    //[[KiwiMoveManager sharedManager] connect];
     
     // Set up Core Data Stack
     [MagicalRecord setupAutoMigratingCoreDataStack];

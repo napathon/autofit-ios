@@ -44,7 +44,7 @@
         [self addSubview:_elapsedTimeLabel];
         
         _elapsedTimeCounterLabel = [self setupBitmapFontViewWithFrame:CGRectMake(10.0, 275.0, 250.0, 50.0)];
-        _caloriesBurnedCounterLabel.text = @"0";
+        _elapsedTimeCounterLabel.text = @"0";
         [self addSubview:_elapsedTimeCounterLabel];
         
         
@@ -83,11 +83,14 @@
 - (void) resetSizes
 {
     [_machineNameLabel resetSize];
-    [_startTimeLabel resetSize];
-    [_endTimeLabel resetSize];
+//    [_startTimeLabel resetSize];
+//    [_endTimeLabel resetSize];
+    
     [_elapsedTimeLabel resetSize];
     [_elapsedTimeCounterLabel resetSize];
+    
     [_caloriesBurnedLabel resetSize];
+    [_caloriesBurnedCounterLabel resetSize];
 }
 
 //- (void) layoutSubviews

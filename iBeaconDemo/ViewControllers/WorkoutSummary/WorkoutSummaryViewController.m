@@ -71,14 +71,25 @@
     NSNumber* numberExercise = [[WorkoutManager sharedManager] numberOfExercises];
     if (numberExercise != nil) {
         _workoutSummaryView.workoutCountLabel.text = [NSString stringWithFormat:@"Machines: %@", [numberExercise stringValue]];
-        _workoutSummaryView.workoutCaloriesBurned.text = [NSString stringWithFormat:@"Calories: %@", [numberExercise stringValue]];
-        _workoutSummaryView.workoutTimeElapsed.text = [NSString stringWithFormat:@"Total Time: %@", [numberExercise stringValue]];
     }
+    
+    
+//    NSString* totalCalories = [[[WorkoutManager sharedManager] totalCaloriesBurned] stringValue];
+//    if (totalCalories != nil) {
+//        _workoutSummaryView.workoutCaloriesBurned.text = [NSString stringWithFormat:@"Calories: %@", totalCalories];
+//    }
+//    
+//    NSString* totalTimeElapsed = [[[WorkoutManager sharedManager] totalTimeElapsed] stringValue];
+//    if (totalTimeElapsed != nil) {
+//        _workoutSummaryView.workoutTimeElapsed.text = [NSString stringWithFormat:@"Total Time: %@", totalTimeElapsed];
+//    }
+    
+    [_workoutSummaryView resetSizes];
 }
 
 - (IBAction)clearWorkoutStats:(id)sender
 {
-    [[WorkoutManager sharedManager] clearAllExerciseStats];
+    //[[WorkoutManager sharedManager] clearAllExerciseStats];
 }
 
 

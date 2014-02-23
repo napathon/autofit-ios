@@ -71,6 +71,9 @@ static WorkoutManager *_sharedInstance = nil;
         [self fireWorkoutFinishedNotificationWithExerciseName:_currentExerciseSet.exerciseName];
         [_currentExerciseSet finishExerciseSet];
         
+        // Save the context
+        //[[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreAndWait];
+        
         // Update the Pebble
         [[PebbleManager sharedManager] updatePebbleFinishedExercise:_currentExerciseSet];
         _currentExerciseSet = nil;
@@ -151,7 +154,19 @@ static WorkoutManager *_sharedInstance = nil;
     [exerciseArray enumerateObjectsUsingBlock:^(ExerciseSet* exerciseSet, NSUInteger idx, BOOL *stop) {
         totalCalories += [exerciseSet.repetitions intValue];
     }];
-    return [NSNumber numberWithInt:[ExerciseSet MR_countOfEntities]];
+    return [NSNumber numberWithInt:totalCalories];
+}
+
+- (NSNumber*) totalTimeElapsed
+{
+    NSArray* exerciseArray = [ExerciseSet MR_findAll];
+    __block NSTimeInterval totalElapsedTime = 0;
+    [exerciseArray enumerateObjectsUsingBlock:^(ExerciseSet* exerciseSet, NSUInteger idx, BOOL *stop) {
+        NSDate* startTime = exerciseSet.startExercise;
+        NSDate* endTime = exerciseSet.endExercise;
+        totalElapsedTime += [endTime timeIntervalSinceDate:startTime];
+    }];
+    return [NSNumber numberWithInt:totalElapsedTime];
 }
 
 - (void) clearAllExerciseStats

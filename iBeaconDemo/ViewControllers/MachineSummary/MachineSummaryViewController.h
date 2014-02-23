@@ -18,4 +18,7 @@
 - (void) updateUI;
 - (void) updateUIWithName:(NSString*)currentExerciseName withStartTime:(NSDate*)startTime;
 
+- (void)handleExerciseStarted:(NSNotification*)notification;
+- (void)handleRepCompleted:(NSNotification*)notification;
+
 @end
