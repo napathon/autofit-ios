@@ -18,7 +18,7 @@
 
 static KiwiMoveManager *_sharedInstance = nil;
 static NSMutableArray *_accelerationLog;
-static int _nextElementIndex;
+static int _currentElementIndex;
 static int _valueBuffer = 120;
 
 @implementation KiwiMoveManager
@@ -27,9 +27,6 @@ static int _valueBuffer = 120;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedInstance = [[KiwiMoveManager alloc] init];
-        _accelerationLog = [ [NSMutableArray alloc] initWithCapacity:_valueBuffer ];
-        _nextElementIndex = 0;
-        
     });
     return _sharedInstance;
 }
@@ -38,6 +35,8 @@ static int _valueBuffer = 120;
     self.socketIO = [[SocketIO alloc] initWithDelegate:_sharedInstance];
     [self.socketIO connectToHost:@"build.kiwiwearables.com" onPort:8080];
     self.reps = 0;
+    _accelerationLog = [ [NSMutableArray alloc] initWithCapacity:_valueBuffer ];
+    _currentElementIndex = -1;
     
     return true;
 }
@@ -64,14 +63,19 @@ static int _valueBuffer = 120;
     NSLog(@"JSON received");
 }
 
-- (void) addData:(float)az {
-    [ _accelerationLog insertObject:[NSNumber numberWithFloat:az] atIndex:_nextElementIndex ];
-    _nextElementIndex = (_nextElementIndex + 1) % _valueBuffer;
-    NSLog(@"az: %f", az);
+- (void) addData:(float)a {
+    _currentElementIndex = (_currentElementIndex + 1) % _valueBuffer;
+    [ _accelerationLog insertObject:[NSNumber numberWithFloat:a] atIndex:_currentElementIndex ];
+    NSLog(@"a: %f", a);
 }
 
-- (BOOL) repDetected {
-    return false;
+- (BOOL) repDetectedWithData:(float)a {
+    BOOL detected = false;
+    if ((_currentElementIndex >= 0) && ([(NSNumber *)[_accelerationLog objectAtIndex:_currentElementIndex] floatValue] - a) > 0.5) {
+        detected = true;
+    }
+    [self addData:a];
+    return detected;
 }
 
 - (void) socketIO:(SocketIO *)socket didReceiveEvent:(SocketIOPacket *)packet {
@@ -100,9 +104,11 @@ static int _valueBuffer = 120;
                 NSLog(@"Error parsing JSON: %@", jsonParsingError);
             }
             else {
+                float ax = [[readout objectForKey:@"ax"] floatValue];
+                float ay = [[readout objectForKey:@"ay"] floatValue];
                 float az = [[readout objectForKey:@"az"] floatValue];
-                [self addData:az];
-                if ([self repDetected]) {
+                float a = sqrtf(ax*ax + ay*ay + az*az);
+                if ([self repDetectedWithData:a]) {
                     self.reps += 1;
                     NSLog(@"Rep %d", self.reps);
                 }

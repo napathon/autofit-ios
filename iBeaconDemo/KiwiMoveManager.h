@@ -12,7 +12,7 @@
 
 + (instancetype)sharedManager;
 - (BOOL)connect;
-- (void)addData:(float)az;
-- (BOOL)repDetected;
+- (void)addData:(float)a;
+- (BOOL)repDetectedWithData:(float)a;
 
 @end
