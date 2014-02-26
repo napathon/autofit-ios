@@ -469,9 +469,6 @@
 					2FE165F418B9CB7E00CAECF2 = {
 						TestTargetID = D573F8DF1805C469001004B2;
 					};
-					D573F8DF1805C469001004B2 = {
-						DevelopmentTeam = 3GF84GRX67;
-					};
 				};
 			};
 			buildConfigurationList = D573F8DB1805C469001004B2 /* Build configuration list for PBXProject "hackathon" */;
