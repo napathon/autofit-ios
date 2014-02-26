@@ -19,7 +19,7 @@ static KiwiMoveManager *_sharedInstance = nil;
 static NSMutableArray *_accelerationLog;
 static int _currentElementIndex;
 static int _valueBuffer = 120;
-static float _detectionTreshold = 0.7f;
+static float _detectionTreshold = 0.95f;
 
 @implementation KiwiMoveManager
 
@@ -78,7 +78,7 @@ static float _detectionTreshold = 0.7f;
     NSLog(@"socket connected");
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setObject:@"30" forKey:@"device_id"];
+    [dict setObject:@"48" forKey:@"device_id"];
     [dict setObject:@"123" forKey:@"password"];
     
     [self.socketIO sendEvent:@"listen" withData:dict];
